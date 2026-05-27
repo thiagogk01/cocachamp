@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COCA CHAMP 🏆</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1e1e1e;
+            --primary-gradient: linear-gradient(135deg, #8a2be2, #4169e1); /* Roxo para Azul */
+            --text-color: #ffffff;
+            --text-secondary: #aaaaaa;
+            --border-color: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        header {
+            background-color: var(--surface-color);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid transparent;
+            border-image: var(--primary-gradient) 1;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background-color: var(--surface-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Tabela de Classificação */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .team-name {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        tr:nth-child(-n+4) td.team-name::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 14px;
+            background: var(--primary-gradient);
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .tabela-info {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        /* Stats Flexbox */
+        .stats-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            flex: 1;
+            min-width: 300px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .stat-list {
+            list-style: none;
+        }
+
+        .stat-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .stat-list li:last-child {
+            border-bottom: none;
+        }
+
+        .player-name { font-weight: bold; }
+        .player-team { color: var(--text-secondary); font-size: 0.8rem; margin-left: 5px; }
+
+        /* Jogos */
+        .round {
+            margin-bottom: 20px;
+            background: #151515;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .round-title {
+            background: var(--primary-gradient);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .match {
+            display: flex;
+            flex-direction: column;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid transparent;
+            border-image: var(--primary-gradient) 1 0 0 0;
+        }
+
+        .match:last-child {
+            margin-bottom: 0;
+        }
+
+        .scoreboard {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .team { flex: 1; text-align: center; }
+        
+        .score { 
+            background: var(--primary-gradient); 
+            padding: 5px 20px; 
+            border-radius: 5px; 
+            color: #fff; 
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .scorers-match {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+        .scorers-match div { flex: 1; text-align: center; }
+
+        /* Elencos */
+        .elencos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .elenco-card {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .elenco-card h3 {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            display: block;
+        }
+
+        .elenco-card ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+
+        .elenco-card li {
+            padding: 4px 0;
+            font-size: 0.9rem;
+        }
+        
+        .elenco-card li::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>COCA CHAMP 🏆</h1>
+        <p>Fase de Grupos - 5 Rodadas</p>
+    </header>
+
+    <div class="container">
+        <!-- TABELA DE CLASSIFICAÇÃO -->
+        <section id="classificacao">
+            <h2>Tabela de Classificação</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="team-name">Time</th>
+                            <th>PTS</th>
+                            <th>J</th>
+                            <th>V</th>
+                            <th>E</th>
+                            <th>D</th>
+                            <th>GP</th>
+                            <th>GC</th>
+                            <th>SG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="team-name">2° PD</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>9</td>
+                            <td>5</td>
+                            <td>+4</td>
+                        </tr>
+                        <tr>
+                            <td class="team-name">3° GEO</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>4</td>
+                            <td>2</td>
+                            <td>+2</td>
+                        </tr>
+                        <tr>
+                            <td class="team-name">1° QPD</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>+2</td>
+                        </tr>
+                        <tr>
+                            <td class="team-name">1° MED</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td>-2</td>
+                        </tr>
+                        <tr>
+                            <td class="team-name">1° PD</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>7</td>
+                            <td>-6</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="tabela-info">Os 4 primeiros avançam para a Semifinal (Mata-mata em Jogo Único).</p>
+        </section>
+
+        <!-- ESTATÍSTICAS -->
+        <section id="estatisticas">
+            <h2>Estatísticas Gerais</h2>
+            <div class="stats-container">
+                <!-- Artilheiros -->
+                <div class="stat-box">
+                    <h3 style="color: #fff; margin-bottom: 15px; text-align: center;">⚽ Artilheiros</h3>
+                    <ul class="stat-list">
+                        <li><div><span class="player-name">Caio</span> <span class="player-team">(2° PD)</span></div> <strong>4</strong></li>
+                        <li><div><span class="player-name">Otávio</span> <span class="player-team">(3° GEO)</span></div> <strong>3</strong></li>
+                        <li><div><span class="player-name">Piva</span> <span class="player-team">(1° QPD)</span></div> <strong>2</strong></li>
+                        <li><div><span class="player-name">Mendes</span> <span class="player-team">(2° PD)</span></div> <strong>2</strong></li>
+                        <li><div><span class="player-name">Dolly</span> <span class="player-team">(1° MED)</span></div> <strong>1</strong></li>
+                        <li><div><span class="player-name">Eduardo</span> <span class="player-team">(3° GEO)</span></div> <strong>1</strong></li>
+                        <li><div><span class="player-name">Ronan</span> <span class="player-team">(1° QPD)</span></div> <strong>1</strong></li>
+                        <li><div><span class="player-name">Samuel</span> <span class="player-team">(2° PD)</span></div> <strong>1</strong></li>
+                        <li><div><span class="player-name">Land Graf</span> <span class="player-team">(2° PD)</span></div> <strong>1</strong></li>
+                        <li><div><span class="player-name">Jefte</span> <span class="player-team">(1° PD)</span></div> <strong>1</strong></li>
+                    </ul>
+                </div>
+                
+                <!-- Assistências -->
+                <div class="stat-box">
+                    <h3 style="color: #fff; margin-bottom: 15px; text-align: center;">👟 Garçons (Assistências)</h3>
+                    <ul class="stat-list">
+                        <li><div><span class="player-name">Thiago Basso</span></div> <strong>3</strong></li>
+                        <li><div><span class="player-name">Kenui</span></div> <strong>3</strong></li>
+                        <li><div><span class="player-name">Rodrigo</span></div> <strong>3</strong></li>
+                        <li><div><span class="player-name">Caio</span></div> <strong>2</strong></li>
+                        <li><div><span class="player-name">Denadai</span></div> <strong>1</strong></li>
+                        <li><div><span class="player-name">Davi</span></div> <strong>1</strong></li>
+                        <li><div><span class="player-name">Breno</span></div> <strong>1</strong></li>
+                        <li><div><span class="player-name">Mendes</span></div> <strong>1</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOGOS -->
+        <section id="jogos">
+            <h2>Tabela de Jogos</h2>
+            
+            <div class="round">
+                <span class="round-title">RODADA 1</span>
+                
+                <div class="match">
+                    <div class="scoreboard">
+                        <div class="team">3° GEO</div>
+                        <div class="score">4 x 2</div>
+                        <div class="team">2° PD</div>
+                    </div>
+                    <div class="scorers-match">
+                        <div>⚽⚽⚽ Otávio<br>⚽ Eduardo</div>
+                        <div>⚽ Gol Contra<br>⚽ Mendes</div>
+                    </div>
+                </div>
+
+                <div class="match">
+                    <div class="scoreboard">
+                        <div class="team">1° QPD</div>
+                        <div class="score">3 x 1</div>
+                        <div class="team">1° MED</div>
+                    </div>
+                    <div class="scorers-match">
+                        <div>⚽⚽ Piva<br>⚽ Ronan</div>
+                        <div>⚽ Dolly</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="round">
+                <span class="round-title">RODADA 2</span>
+                
+                <div class="match">
+                    <div class="scoreboard">
+                        <div class="team">2° PD</div>
+                        <div class="score">7 x 1</div>
+                        <div class="team">1° PD</div>
+                    </div>
+                    <div class="scorers-match">
+                        <div>⚽⚽⚽⚽ Caio<br>⚽ Samuel<br>⚽ Mendes<br>⚽ Land Graf</div>
+                        <div>⚽ Jefte</div>
+                    </div>
+                </div>
+
+                <div class="match">
+                    <div class="scoreboard">
+                        <div class="team">3° GEO</div>
+                        <div class="score"> VS </div>
+                        <div class="team">1° MED</div>
+                    </div>
+                    <div class="scorers-match" style="justify-content: center;">
+                        <div style="text-align: center;">A Jogar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="round">
+                <span class="round-title">RODADA 3</span>
+                
+                <div class="match">
+                    <div class="scoreboard">
+                        <div class="team">3° GEO</div>
+                        <div class="score"> VS </div>
+                        <div class="team">1° QPD</div>
+                    </div>
+                    <div class="scorers-match" style="justify-content: center;">
+                        <div style="text-align: center;">A Jogar</div>
+                    </div>
+                </div>
+
+                <div class="match">
+                    <div class="scoreboard">
+                        <div class="team">1° PD</div>
+                        <div class="score"> VS </div>
+                        <div class="team">1° MED</div>
+                    </div>
+                    <div class="scorers-match" style="justify-content: center;">
+                        <div style="text-align: center;">A Jogar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="round">
+                <span class="round-title">RODADA 4</span>
+                
+                <div class="match">
+                    <div class="scoreboard">
+                        <div class="team">1° PD</div>
+                        <div class="score"> VS </div>
+                        <div class="team">1° QPD</div>
+                    </div>
+                    <div class="scorers-match" style="justify-content: center;">
+                        <div style="text-align: center;">A Jogar</div>
+                    </div>
+                </div>
+
+                <div class="match">
+                    <div class="scoreboard">
+                        <div class="team">2° PD</div>
+                        <div class="score"> VS </div>
+                        <div class="team">1° MED</div>
+                    </div>
+                    <div class="scorers-match" style="justify-content: center;">
+                        <div style="text-align: center;">A Jogar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="round">
+                <span class="round-title">RODADA 5</span>
+                
+                <div class="match">
+                    <div class="scoreboard">
+                        <div class="team">3° GEO</div>
+                        <div class="score"> VS </div>
+                        <div class="team">1° PD</div>
+                    </div>
+                    <div class="scorers-match" style="justify-content: center;">
+                        <div style="text-align: center;">A Jogar</div>
+                    </div>
+                </div>
+
+                <div class="match">
+                    <div class="scoreboard">
+                        <div class="team">2° PD</div>
+                        <div class="score"> VS </div>
+                        <div class="team">1° QPD</div>
+                    </div>
+                    <div class="scorers-match" style="justify-content: center;">
+                        <div style="text-align: center;">A Jogar</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ELENCOS -->
+        <section id="elencos">
+            <h2>Elencos Inscritos</h2>
+            <div class="elencos-grid">
+                
+                <div class="elenco-card">
+                    <h3>2° PD</h3>
+                    <ul>
+                        <li>Gabigol</li>
+                        <li>Thiago</li>
+                        <li>Bernardo</li>
+                        <li>Mendes</li>
+                        <li>Jão</li>
+                        <li>Adati</li>
+                        <li>Natan</li>
+                        <li>Caio</li>
+                        <li>Mano Brawl</li>
+                        <li>Samuel</li>
+                        <li>Landgraf</li>
+                        <li>Tiago</li>
+                    </ul>
+                </div>
+
+                <div class="elenco-card">
+                    <h3>3° GEO</h3>
+                    <ul>
+                        <li>Colo Colo</li>
+                        <li>Yuri</li>
+                        <li>Davi</li>
+                        <li>Japa</li>
+                        <li>Arthur</li>
+                        <li>Thiago</li>
+                        <li>Kenui</li>
+                        <li>Paparotte</li>
+                        <li>Eduardo</li>
+                        <li>Gabriel</li>
+                        <li>Heinzenberg</li>
+                        <li>Otávio</li>
+                    </ul>
+                </div>
+
+                <div class="elenco-card">
+                    <h3>1° QPD</h3>
+                    <ul>
+                        <li>Bruno</li>
+                        <li>Rodrigo</li>
+                        <li>Enzo</li>
+                        <li>Mauro</li>
+                        <li>Leonardo</li>
+                        <li>Karolayne</li>
+                        <li>Rafael</li>
+                        <li>Nicolas</li>
+                        <li>Vitor</li>
+                        <li>Ronan</li>
+                        <li>Piva</li>
+                    </ul>
+                </div>
+
+                <div class="elenco-card">
+                    <h3>1° MED</h3>
+                    <ul>
+                        <li>Julio</li>
+                        <li>Vitor</li>
+                        <li>Lucas</li>
+                        <li>Zullo</li>
+                        <li>Denadai</li>
+                        <li>Dolynho</li>
+                        <li>Davi</li>
+                        <li>Querubim</li>
+                        <li>Nathan</li>
+                        <li>Bruno</li>
+                    </ul>
+                </div>
+
+                <div class="elenco-card">
+                    <h3>1° PD</h3>
+                    <ul>
+                        <li>Gabriel Manzatto</li>
+                        <li>Murilo</li>
+                        <li>Molina</li>
+                        <li>Rian</li>
+                        <li>Breno</li>
+                        <li>Heitor</li>
+                        <li>Miguel</li>
+                        <li>Joao Pedro</li>
+                        <li>Pedro H.</li>
+                        <li>Bruno Jefte</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
