@@ -4,267 +4,682 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COCA CHAMP 🏆</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #121212;
-            --surface-color: #1e1e1e;
-            --primary-gradient: linear-gradient(135deg, #8a2be2, #4169e1); /* Roxo para Azul */
-            --text-color: #ffffff;
-            --text-secondary: #aaaaaa;
-            --border-color: #333333;
+            --bg: #0a0a0f;
+            --surface: #111118;
+            --surface-2: #16161f;
+            --surface-3: #1c1c28;
+            --purple: #8a2be2;
+            --blue: #4169e1;
+            --purple-light: #a855f7;
+            --blue-light: #60a5fa;
+            --grad: linear-gradient(135deg, #8a2be2, #4169e1);
+            --grad-text: linear-gradient(135deg, #a855f7, #60a5fa);
+            --glow-purple: 0 0 20px rgba(138,43,226,0.4);
+            --glow-blue: 0 0 20px rgba(65,105,225,0.4);
+            --border: rgba(138,43,226,0.2);
+            --border-bright: rgba(138,43,226,0.5);
+            --text: #e8e8f0;
+            --text-muted: #6b6b8a;
+            --text-dim: #9898b8;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Exo 2', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            padding-bottom: 50px;
+            overflow-x: hidden;
         }
 
+        /* ─── BACKGROUND GRID ─── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(138,43,226,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(138,43,226,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 20%, rgba(138,43,226,0.06) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(65,105,225,0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+            animation: aurora 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes aurora {
+            from { transform: translate(0,0) rotate(0deg); }
+            to   { transform: translate(30px, 20px) rotate(3deg); }
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10,10,15,0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 30px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: 1rem;
+            background: var(--grad-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+            border-color: var(--border-bright);
+            background: rgba(138,43,226,0.1);
+        }
+
+        /* ─── HEADER ─── */
         header {
-            background-color: var(--surface-color);
-            padding: 20px;
+            position: relative;
+            z-index: 1;
+            padding: 130px 20px 70px;
             text-align: center;
-            border-bottom: 3px solid transparent;
-            border-image: var(--primary-gradient) 1;
-            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .header-badge {
+            display: inline-block;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            color: var(--purple-light);
+            background: rgba(138,43,226,0.12);
+            border: 1px solid rgba(138,43,226,0.3);
+            padding: 6px 18px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
         }
 
         h1 {
-            background: var(--primary-gradient);
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            background: var(--grad-text);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 2.5rem;
+            letter-spacing: 4px;
+            line-height: 1;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 0 40px rgba(138,43,226,0.5));
+        }
+
+        .header-sub {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
+            font-weight: 600;
         }
 
+        .header-line {
+            width: 120px;
+            height: 2px;
+            background: var(--grad);
+            margin: 24px auto 0;
+            border-radius: 2px;
+            box-shadow: var(--glow-purple);
+        }
+
+        /* ─── SECTION NAV DOTS ─── */
         .container {
-            max-width: 1000px;
+            max-width: 1040px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 20px 80px;
+            position: relative;
+            z-index: 1;
         }
 
-        section {
-            background-color: var(--surface-color);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        /* ─── SECTION CARD ─── */
+        .section-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--grad);
+            opacity: 0.7;
+        }
+
+        .section-card:hover {
+            border-color: var(--border-bright);
+        }
+
+        .section-number {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.6rem;
+            color: var(--border-bright);
+            letter-spacing: 2px;
         }
 
         h2 {
-            background: var(--primary-gradient);
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: var(--grad-text);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
         }
 
-        /* Tabela de Classificação */
+        /* ─── STANDINGS TABLE ─── */
+        .table-wrap { overflow-x: auto; }
+
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: center;
-            margin-bottom: 10px;
+            font-size: 0.9rem;
         }
 
-        th, td {
-            padding: 12px;
-            border-bottom: 1px solid var(--border-color);
+        thead tr {
+            background: rgba(138,43,226,0.08);
         }
 
         th {
-            color: var(--text-secondary);
-            font-weight: 600;
+            padding: 12px 10px;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
         }
+
+        td {
+            padding: 13px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+
+        tbody tr {
+            transition: background 0.15s;
+        }
+
+        tbody tr:hover { background: rgba(138,43,226,0.06); }
 
         .team-name {
             text-align: left;
-            font-weight: bold;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
-        tr:nth-child(-n+4) td.team-name::before {
-            content: '';
+        .rank-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rank-bar {
+            width: 3px;
+            height: 16px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .rank-qual .rank-bar { background: var(--grad); box-shadow: var(--glow-purple); }
+        .rank-out  .rank-bar { background: var(--text-muted); }
+
+        .pts-cell {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            background: var(--grad-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sg-pos { color: #4ade80; font-weight: 700; }
+        .sg-neg { color: #f87171; font-weight: 700; }
+
+        .table-footnote {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 16px;
+            text-align: center;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+            letter-spacing: 0.5px;
+        }
+
+        .qual-badge {
             display: inline-block;
-            width: 4px;
-            height: 14px;
-            background: var(--primary-gradient);
-            margin-right: 8px;
+            font-size: 0.6rem;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
+            padding: 2px 7px;
+            border-radius: 3px;
+            background: rgba(138,43,226,0.2);
+            border: 1px solid rgba(138,43,226,0.4);
+            color: var(--purple-light);
+            margin-left: 8px;
             vertical-align: middle;
         }
 
-        .tabela-info {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            text-align: center;
-        }
-
-        /* Stats Flexbox */
-        .stats-container {
-            display: flex;
+        /* ─── STATS ─── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
-            flex-wrap: wrap;
         }
 
-        .stat-box {
-            flex: 1;
-            min-width: 300px;
-            background-color: #1a1a1a;
-            border-radius: 8px;
-            padding: 15px;
+        @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } }
+
+        .stat-panel {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
         }
 
-        .stat-list {
-            list-style: none;
+        .stat-panel-header {
+            padding: 14px 18px;
+            background: rgba(138,43,226,0.1);
+            border-bottom: 1px solid var(--border);
+            font-family: 'Orbitron', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+            text-transform: uppercase;
         }
 
-        .stat-list li {
+        .stat-list { list-style: none; }
+
+        .stat-item {
             display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px dashed var(--border-color);
+            align-items: center;
+            padding: 11px 18px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            gap: 12px;
+            transition: background 0.15s;
         }
 
-        .stat-list li:last-child {
-            border-bottom: none;
+        .stat-item:hover { background: rgba(138,43,226,0.05); }
+        .stat-item:last-child { border-bottom: none; }
+
+        .stat-rank {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            width: 18px;
+            text-align: right;
+            flex-shrink: 0;
         }
 
-        .player-name { font-weight: bold; }
-        .player-team { color: var(--text-secondary); font-size: 0.8rem; margin-left: 5px; }
+        .stat-name { font-weight: 600; flex: 1; font-size: 0.9rem; }
+        .stat-team { color: var(--text-muted); font-size: 0.75rem; }
 
-        /* Jogos */
+        .stat-value {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.05rem;
+            background: var(--grad-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-bar-wrap {
+            width: 50px;
+            height: 3px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .stat-bar {
+            height: 100%;
+            border-radius: 2px;
+            background: var(--grad);
+        }
+
+        /* ─── ROUNDS ─── */
         .round {
-            margin-bottom: 20px;
-            background: #151515;
-            padding: 15px;
-            border-radius: 8px;
-        }
-        
-        .round-title {
-            background: var(--primary-gradient);
-            color: #fff;
-            padding: 5px 15px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            display: inline-block;
+            margin-bottom: 28px;
         }
 
-        .match {
+        .round:last-child { margin-bottom: 0; }
+
+        .round-header {
             display: flex;
-            flex-direction: column;
-            background-color: #1a1a1a;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 4px solid transparent;
-            border-image: var(--primary-gradient) 1 0 0 0;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
         }
 
-        .match:last-child {
-            margin-bottom: 0;
+        .round-label {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            font-weight: 700;
+            color: var(--text);
+            background: var(--grad);
+            padding: 5px 14px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .round-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ─── MATCH CARD ─── */
+        .match {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .match:hover {
+            border-color: var(--border-bright);
+            transform: translateY(-1px);
+        }
+
+        .match.played::after {
+            content: 'ENCERRADO';
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 2px 7px;
+            border-radius: 3px;
+        }
+
+        .match.upcoming::after {
+            content: 'A JOGAR';
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            color: #4ade80;
+            border: 1px solid rgba(74,222,128,0.3);
+            padding: 2px 7px;
+            border-radius: 3px;
         }
 
         .scoreboard {
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: 15px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 14px;
         }
 
-        .team { flex: 1; text-align: center; }
-        
-        .score { 
-            background: var(--primary-gradient); 
-            padding: 5px 20px; 
-            border-radius: 5px; 
-            color: #fff; 
-            min-width: 80px;
+        .team-side {
+            flex: 1;
             text-align: center;
         }
-        
-        .scorers-match {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+
+        .team-tag {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: clamp(0.75rem, 2vw, 1rem);
+            letter-spacing: 1px;
+            color: var(--text);
+        }
+
+        .score-display {
             display: flex;
-            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
         }
-        .scorers-match div { flex: 1; text-align: center; }
 
-        /* Elencos */
-        .elencos-grid {
+        .score-num {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            width: 52px;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .score-home { color: var(--purple-light); text-shadow: 0 0 20px rgba(168,85,247,0.5); }
+        .score-away { color: var(--blue-light); text-shadow: 0 0 20px rgba(96,165,250,0.4); }
+
+        .score-sep {
+            font-family: 'Orbitron', monospace;
+            font-weight: 300;
+            font-size: 1.4rem;
+            color: var(--text-muted);
+        }
+
+        .score-vs {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+
+        /* ─── SCORERS ─── */
+        .scorers-row {
+            display: flex;
+            gap: 8px;
+            font-size: 0.8rem;
+        }
+
+        .scorers-home, .scorers-away {
+            flex: 1;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .scorer-line {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            padding: 2px 0;
+            color: var(--text-dim);
+        }
+
+        .scorer-icon { font-size: 0.9em; }
+        .scorer-player { font-weight: 600; color: var(--text); }
+        .scorer-assist { color: var(--text-muted); font-size: 0.75em; }
+
+        /* ─── SQUADS ─── */
+        .squads-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
         }
 
-        .elenco-card {
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 8px;
+        .squad-card {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color 0.2s, transform 0.2s;
         }
 
-        .elenco-card h3 {
-            background: var(--primary-gradient);
+        .squad-card:hover {
+            border-color: var(--border-bright);
+            transform: translateY(-2px);
+        }
+
+        .squad-header {
+            padding: 14px 16px;
+            background: rgba(138,43,226,0.1);
+            border-bottom: 1px solid var(--border);
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-align: center;
+            background: var(--grad-text);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 5px;
-            display: block;
         }
 
-        .elenco-card ul {
-            list-style-type: none;
-            padding-left: 10px;
+        .squad-list {
+            list-style: none;
+            padding: 10px 0;
         }
 
-        .elenco-card li {
-            padding: 4px 0;
-            font-size: 0.9rem;
+        .squad-list li {
+            padding: 5px 16px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.15s;
         }
-        
-        .elenco-card li::before {
+
+        .squad-list li:last-child { border-bottom: none; }
+        .squad-list li:hover { color: var(--text); }
+
+        .squad-list li::before {
             content: '';
-            display: inline-block;
-            width: 6px;
-            height: 6px;
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
-            background: var(--primary-gradient);
-            margin-right: 8px;
-            vertical-align: middle;
+            background: var(--grad);
+            flex-shrink: 0;
+        }
+
+        /* ─── SCROLLBAR ─── */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-card { animation: fadeUp 0.5s ease both; }
+        .section-card:nth-child(1) { animation-delay: 0.05s; }
+        .section-card:nth-child(2) { animation-delay: 0.1s; }
+        .section-card:nth-child(3) { animation-delay: 0.15s; }
+        .section-card:nth-child(4) { animation-delay: 0.2s; }
+
+        @media (max-width: 700px) {
+            nav { padding: 0 16px; }
+            .nav-links { gap: 2px; }
+            .nav-links a { padding: 5px 8px; font-size: 0.65rem; }
+            .section-card { padding: 20px 16px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- NAV -->
+    <nav>
+        <span class="nav-logo">COCA CHAMP</span>
+        <ul class="nav-links">
+            <li><a href="#classificacao">Tabela</a></li>
+            <li><a href="#estatisticas">Stats</a></li>
+            <li><a href="#jogos">Jogos</a></li>
+            <li><a href="#elencos">Elencos</a></li>
+        </ul>
+    </nav>
+
+    <!-- HEADER -->
     <header>
+        <div class="header-badge">Temporada 2025</div>
         <h1>COCA CHAMP 🏆</h1>
-        <p>Fase de Grupos - 5 Rodadas</p>
+        <p class="header-sub">Fase de Grupos · 5 Rodadas</p>
+        <div class="header-line"></div>
     </header>
 
     <div class="container">
-        <!-- TABELA DE CLASSIFICAÇÃO -->
-        <section id="classificacao">
-            <h2>Tabela de Classificação</h2>
-            <div style="overflow-x: auto;">
+
+        <!-- CLASSIFICAÇÃO -->
+        <section class="section-card" id="classificacao">
+            <span class="section-number">01 / 04</span>
+            <h2>⚡ Tabela de Classificação</h2>
+            <div class="table-wrap">
                 <table>
                     <thead>
                         <tr>
@@ -281,334 +696,498 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="team-name">2° PD</td>
-                            <td>3</td>
-                            <td>2</td>
-                            <td>1</td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>9</td>
-                            <td>5</td>
-                            <td>+4</td>
+                            <td class="team-name">
+                                <span class="rank-indicator rank-qual">
+                                    <span class="rank-bar"></span>
+                                    3° GEO
+                                </span>
+                                <span class="qual-badge">SF</span>
+                            </td>
+                            <td class="pts-cell">6</td>
+                            <td>2</td><td>2</td><td>0</td><td>0</td>
+                            <td>8</td><td>5</td>
+                            <td class="sg-pos">+3</td>
                         </tr>
                         <tr>
-                            <td class="team-name">3° GEO</td>
-                            <td>3</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>4</td>
-                            <td>2</td>
-                            <td>+2</td>
+                            <td class="team-name">
+                                <span class="rank-indicator rank-qual">
+                                    <span class="rank-bar"></span>
+                                    2° PD
+                                </span>
+                                <span class="qual-badge">SF</span>
+                            </td>
+                            <td class="pts-cell">3</td>
+                            <td>2</td><td>1</td><td>0</td><td>1</td>
+                            <td>9</td><td>5</td>
+                            <td class="sg-pos">+4</td>
                         </tr>
                         <tr>
-                            <td class="team-name">1° QPD</td>
-                            <td>3</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>3</td>
-                            <td>1</td>
-                            <td>+2</td>
+                            <td class="team-name">
+                                <span class="rank-indicator rank-qual">
+                                    <span class="rank-bar"></span>
+                                    1° QPD
+                                </span>
+                                <span class="qual-badge">SF</span>
+                            </td>
+                            <td class="pts-cell">3</td>
+                            <td>1</td><td>1</td><td>0</td><td>0</td>
+                            <td>3</td><td>1</td>
+                            <td class="sg-pos">+2</td>
                         </tr>
                         <tr>
-                            <td class="team-name">1° MED</td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>-2</td>
+                            <td class="team-name">
+                                <span class="rank-indicator rank-out">
+                                    <span class="rank-bar"></span>
+                                    1° MED
+                                </span>
+                            </td>
+                            <td class="pts-cell">0</td>
+                            <td>2</td><td>0</td><td>0</td><td>2</td>
+                            <td>4</td><td>7</td>
+                            <td class="sg-neg">-3</td>
                         </tr>
                         <tr>
-                            <td class="team-name">1° PD</td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>7</td>
-                            <td>-6</td>
+                            <td class="team-name">
+                                <span class="rank-indicator rank-out">
+                                    <span class="rank-bar"></span>
+                                    1° PD
+                                </span>
+                            </td>
+                            <td class="pts-cell">0</td>
+                            <td>1</td><td>0</td><td>0</td><td>1</td>
+                            <td>1</td><td>7</td>
+                            <td class="sg-neg">-6</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <p class="tabela-info">Os 4 primeiros avançam para a Semifinal (Mata-mata em Jogo Único).</p>
+            <p class="table-footnote">🔷 Os 4 primeiros avançam para a Semifinal (Mata-mata em Jogo Único) &nbsp;|&nbsp; SF = Classificado para Semifinal</p>
         </section>
 
         <!-- ESTATÍSTICAS -->
-        <section id="estatisticas">
-            <h2>Estatísticas Gerais</h2>
-            <div class="stats-container">
+        <section class="section-card" id="estatisticas">
+            <span class="section-number">02 / 04</span>
+            <h2>📊 Estatísticas Gerais</h2>
+            <div class="stats-grid">
+
                 <!-- Artilheiros -->
-                <div class="stat-box">
-                    <h3 style="color: #fff; margin-bottom: 15px; text-align: center;">⚽ Artilheiros</h3>
+                <div class="stat-panel">
+                    <div class="stat-panel-header">⚽ Artilheiros</div>
                     <ul class="stat-list">
-                        <li><div><span class="player-name">Caio</span> <span class="player-team">(2° PD)</span></div> <strong>4</strong></li>
-                        <li><div><span class="player-name">Otávio</span> <span class="player-team">(3° GEO)</span></div> <strong>3</strong></li>
-                        <li><div><span class="player-name">Piva</span> <span class="player-team">(1° QPD)</span></div> <strong>2</strong></li>
-                        <li><div><span class="player-name">Mendes</span> <span class="player-team">(2° PD)</span></div> <strong>2</strong></li>
-                        <li><div><span class="player-name">Dolly</span> <span class="player-team">(1° MED)</span></div> <strong>1</strong></li>
-                        <li><div><span class="player-name">Eduardo</span> <span class="player-team">(3° GEO)</span></div> <strong>1</strong></li>
-                        <li><div><span class="player-name">Ronan</span> <span class="player-team">(1° QPD)</span></div> <strong>1</strong></li>
-                        <li><div><span class="player-name">Samuel</span> <span class="player-team">(2° PD)</span></div> <strong>1</strong></li>
-                        <li><div><span class="player-name">Land Graf</span> <span class="player-team">(2° PD)</span></div> <strong>1</strong></li>
-                        <li><div><span class="player-name">Jefte</span> <span class="player-team">(1° PD)</span></div> <strong>1</strong></li>
+                        <li class="stat-item">
+                            <span class="stat-rank">1</span>
+                            <span class="stat-name">Caio <span class="stat-team">(2° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:100%"></span></span>
+                            <span class="stat-value">4</span>
+                        </li>
+                        <!-- Otávio also rank 1 -->
+                        <li class="stat-item">
+                            <span class="stat-rank">1</span>
+                            <span class="stat-name">Otávio <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:100%"></span></span>
+                            <span class="stat-value">4</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">3</span>
+                            <span class="stat-name">Piva <span class="stat-team">(1° QPD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:50%"></span></span>
+                            <span class="stat-value">2</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">3</span>
+                            <span class="stat-name">Mendes <span class="stat-team">(2° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:50%"></span></span>
+                            <span class="stat-value">2</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">3</span>
+                            <span class="stat-name">Davi <span class="stat-team">(1° MED)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:50%"></span></span>
+                            <span class="stat-value">2</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">6</span>
+                            <span class="stat-name">Heisenberg <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">6</span>
+                            <span class="stat-name">Japa <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">6</span>
+                            <span class="stat-name">Moskitão <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">6</span>
+                            <span class="stat-name">Dolly <span class="stat-team">(1° MED)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">6</span>
+                            <span class="stat-name">Henrique <span class="stat-team">(1° MED)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">6</span>
+                            <span class="stat-name">Eduardo <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">6</span>
+                            <span class="stat-name">Ronan <span class="stat-team">(1° QPD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">6</span>
+                            <span class="stat-name">Samuel <span class="stat-team">(2° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">6</span>
+                            <span class="stat-name">Landgraf <span class="stat-team">(2° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">6</span>
+                            <span class="stat-name">Jefte <span class="stat-team">(1° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
                     </ul>
                 </div>
-                
+
                 <!-- Assistências -->
-                <div class="stat-box">
-                    <h3 style="color: #fff; margin-bottom: 15px; text-align: center;">👟 Garçons (Assistências)</h3>
+                <div class="stat-panel">
+                    <div class="stat-panel-header">👟 Garçons (Assistências)</div>
                     <ul class="stat-list">
-                        <li><div><span class="player-name">Thiago Basso</span></div> <strong>3</strong></li>
-                        <li><div><span class="player-name">Kenui</span></div> <strong>3</strong></li>
-                        <li><div><span class="player-name">Rodrigo</span></div> <strong>3</strong></li>
-                        <li><div><span class="player-name">Caio</span></div> <strong>2</strong></li>
-                        <li><div><span class="player-name">Denadai</span></div> <strong>1</strong></li>
-                        <li><div><span class="player-name">Davi</span></div> <strong>1</strong></li>
-                        <li><div><span class="player-name">Breno</span></div> <strong>1</strong></li>
-                        <li><div><span class="player-name">Mendes</span></div> <strong>1</strong></li>
+                        <li class="stat-item">
+                            <span class="stat-rank">1</span>
+                            <span class="stat-name">Tiago Basso</span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:100%"></span></span>
+                            <span class="stat-value">3</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">1</span>
+                            <span class="stat-name">Kenui</span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:100%"></span></span>
+                            <span class="stat-value">3</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">1</span>
+                            <span class="stat-name">Rodrigo</span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:100%"></span></span>
+                            <span class="stat-value">3</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">4</span>
+                            <span class="stat-name">Caio</span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:66%"></span></span>
+                            <span class="stat-value">2</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Moskitão</span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Japa</span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Dolly</span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Denadai</span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Davi</span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Breno</span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Mendes</span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- JOGOS -->
-        <section id="jogos">
-            <h2>Tabela de Jogos</h2>
-            
+        <section class="section-card" id="jogos">
+            <span class="section-number">03 / 04</span>
+            <h2>🗓 Tabela de Jogos</h2>
+
+            <!-- RODADA 1 -->
             <div class="round">
-                <span class="round-title">RODADA 1</span>
-                
-                <div class="match">
+                <div class="round-header">
+                    <span class="round-label">Rodada 1</span>
+                    <div class="round-line"></div>
+                </div>
+
+                <div class="match played">
                     <div class="scoreboard">
-                        <div class="team">3° GEO</div>
-                        <div class="score">4 x 2</div>
-                        <div class="team">2° PD</div>
+                        <div class="team-side"><div class="team-tag">3° GEO</div></div>
+                        <div class="score-display">
+                            <span class="score-num score-home">4</span>
+                            <span class="score-sep">×</span>
+                            <span class="score-num score-away">2</span>
+                        </div>
+                        <div class="team-side"><div class="team-tag">2° PD</div></div>
                     </div>
-                    <div class="scorers-match">
-                        <div>⚽⚽⚽ Otávio<br>⚽ Eduardo</div>
-                        <div>⚽ Gol Contra<br>⚽ Mendes</div>
+                    <div class="scorers-row">
+                        <div class="scorers-home">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Otávio</span><span class="scorer-assist">(x3)</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Eduardo</span></div>
+                        </div>
+                        <div class="scorers-away">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Arthur (gol contra)</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Mendes</span></div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="match">
+                <div class="match played">
                     <div class="scoreboard">
-                        <div class="team">1° QPD</div>
-                        <div class="score">3 x 1</div>
-                        <div class="team">1° MED</div>
+                        <div class="team-side"><div class="team-tag">1° QPD</div></div>
+                        <div class="score-display">
+                            <span class="score-num score-home">3</span>
+                            <span class="score-sep">×</span>
+                            <span class="score-num score-away">1</span>
+                        </div>
+                        <div class="team-side"><div class="team-tag">1° MED</div></div>
                     </div>
-                    <div class="scorers-match">
-                        <div>⚽⚽ Piva<br>⚽ Ronan</div>
-                        <div>⚽ Dolly</div>
+                    <div class="scorers-row">
+                        <div class="scorers-home">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Piva</span><span class="scorer-assist">(x2)</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Ronan</span></div>
+                        </div>
+                        <div class="scorers-away">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Dolly</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- RODADA 2 -->
             <div class="round">
-                <span class="round-title">RODADA 2</span>
-                
-                <div class="match">
+                <div class="round-header">
+                    <span class="round-label">Rodada 2</span>
+                    <div class="round-line"></div>
+                </div>
+
+                <div class="match played">
                     <div class="scoreboard">
-                        <div class="team">2° PD</div>
-                        <div class="score">7 x 1</div>
-                        <div class="team">1° PD</div>
+                        <div class="team-side"><div class="team-tag">2° PD</div></div>
+                        <div class="score-display">
+                            <span class="score-num score-home">7</span>
+                            <span class="score-sep">×</span>
+                            <span class="score-num score-away">1</span>
+                        </div>
+                        <div class="team-side"><div class="team-tag">1° PD</div></div>
                     </div>
-                    <div class="scorers-match">
-                        <div>⚽⚽⚽⚽ Caio<br>⚽ Samuel<br>⚽ Mendes<br>⚽ Land Graf</div>
-                        <div>⚽ Jefte</div>
+                    <div class="scorers-row">
+                        <div class="scorers-home">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Caio</span><span class="scorer-assist">(x4)</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Samuel</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Mendes</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Land Graf</span></div>
+                        </div>
+                        <div class="scorers-away">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Jefte</span></div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="match">
+                <div class="match played">
                     <div class="scoreboard">
-                        <div class="team">3° GEO</div>
-                        <div class="score"> VS </div>
-                        <div class="team">1° MED</div>
+                        <div class="team-side"><div class="team-tag">3° GEO</div></div>
+                        <div class="score-display">
+                            <span class="score-num score-home">4</span>
+                            <span class="score-sep">×</span>
+                            <span class="score-num score-away">3</span>
+                        </div>
+                        <div class="team-side"><div class="team-tag">1° MED</div></div>
                     </div>
-                    <div class="scorers-match" style="justify-content: center;">
-                        <div style="text-align: center;">A Jogar</div>
+                    <div class="scorers-row">
+                        <div class="scorers-home">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Otávio</span><span class="scorer-assist"> 👟 Moskitão</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Heisenberg</span><span class="scorer-assist"> 👟 Japa</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Japa</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Moskitão</span></div>
+                        </div>
+                        <div class="scorers-away">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Henrique</span><span class="scorer-assist"> 👟 Dolly</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Davi</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Davi</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- RODADA 3 -->
             <div class="round">
-                <span class="round-title">RODADA 3</span>
-                
-                <div class="match">
+                <div class="round-header">
+                    <span class="round-label">Rodada 3</span>
+                    <div class="round-line"></div>
+                </div>
+
+                <div class="match upcoming">
                     <div class="scoreboard">
-                        <div class="team">3° GEO</div>
-                        <div class="score"> VS </div>
-                        <div class="team">1° QPD</div>
-                    </div>
-                    <div class="scorers-match" style="justify-content: center;">
-                        <div style="text-align: center;">A Jogar</div>
+                        <div class="team-side"><div class="team-tag">3° GEO</div></div>
+                        <div class="score-display"><span class="score-vs">VS</span></div>
+                        <div class="team-side"><div class="team-tag">1° QPD</div></div>
                     </div>
                 </div>
 
-                <div class="match">
+                <div class="match upcoming">
                     <div class="scoreboard">
-                        <div class="team">1° PD</div>
-                        <div class="score"> VS </div>
-                        <div class="team">1° MED</div>
-                    </div>
-                    <div class="scorers-match" style="justify-content: center;">
-                        <div style="text-align: center;">A Jogar</div>
+                        <div class="team-side"><div class="team-tag">1° PD</div></div>
+                        <div class="score-display"><span class="score-vs">VS</span></div>
+                        <div class="team-side"><div class="team-tag">1° MED</div></div>
                     </div>
                 </div>
             </div>
 
+            <!-- RODADA 4 -->
             <div class="round">
-                <span class="round-title">RODADA 4</span>
-                
-                <div class="match">
+                <div class="round-header">
+                    <span class="round-label">Rodada 4</span>
+                    <div class="round-line"></div>
+                </div>
+
+                <div class="match upcoming">
                     <div class="scoreboard">
-                        <div class="team">1° PD</div>
-                        <div class="score"> VS </div>
-                        <div class="team">1° QPD</div>
-                    </div>
-                    <div class="scorers-match" style="justify-content: center;">
-                        <div style="text-align: center;">A Jogar</div>
+                        <div class="team-side"><div class="team-tag">1° PD</div></div>
+                        <div class="score-display"><span class="score-vs">VS</span></div>
+                        <div class="team-side"><div class="team-tag">1° QPD</div></div>
                     </div>
                 </div>
 
-                <div class="match">
+                <div class="match upcoming">
                     <div class="scoreboard">
-                        <div class="team">2° PD</div>
-                        <div class="score"> VS </div>
-                        <div class="team">1° MED</div>
-                    </div>
-                    <div class="scorers-match" style="justify-content: center;">
-                        <div style="text-align: center;">A Jogar</div>
+                        <div class="team-side"><div class="team-tag">2° PD</div></div>
+                        <div class="score-display"><span class="score-vs">VS</span></div>
+                        <div class="team-side"><div class="team-tag">1° MED</div></div>
                     </div>
                 </div>
             </div>
 
+            <!-- RODADA 5 -->
             <div class="round">
-                <span class="round-title">RODADA 5</span>
-                
-                <div class="match">
+                <div class="round-header">
+                    <span class="round-label">Rodada 5</span>
+                    <div class="round-line"></div>
+                </div>
+
+                <div class="match upcoming">
                     <div class="scoreboard">
-                        <div class="team">3° GEO</div>
-                        <div class="score"> VS </div>
-                        <div class="team">1° PD</div>
-                    </div>
-                    <div class="scorers-match" style="justify-content: center;">
-                        <div style="text-align: center;">A Jogar</div>
+                        <div class="team-side"><div class="team-tag">3° GEO</div></div>
+                        <div class="score-display"><span class="score-vs">VS</span></div>
+                        <div class="team-side"><div class="team-tag">1° PD</div></div>
                     </div>
                 </div>
 
-                <div class="match">
+                <div class="match upcoming">
                     <div class="scoreboard">
-                        <div class="team">2° PD</div>
-                        <div class="score"> VS </div>
-                        <div class="team">1° QPD</div>
-                    </div>
-                    <div class="scorers-match" style="justify-content: center;">
-                        <div style="text-align: center;">A Jogar</div>
+                        <div class="team-side"><div class="team-tag">2° PD</div></div>
+                        <div class="score-display"><span class="score-vs">VS</span></div>
+                        <div class="team-side"><div class="team-tag">1° QPD</div></div>
                     </div>
                 </div>
             </div>
+
         </section>
 
         <!-- ELENCOS -->
-        <section id="elencos">
-            <h2>Elencos Inscritos</h2>
-            <div class="elencos-grid">
-                
-                <div class="elenco-card">
-                    <h3>2° PD</h3>
-                    <ul>
-                        <li>Gabigol</li>
-                        <li>Thiago</li>
-                        <li>Bernardo</li>
-                        <li>Mendes</li>
-                        <li>Jão</li>
-                        <li>Adati</li>
-                        <li>Natan</li>
-                        <li>Caio</li>
-                        <li>Mano Brawl</li>
-                        <li>Samuel</li>
-                        <li>Landgraf</li>
-                        <li>Tiago</li>
+        <section class="section-card" id="elencos">
+            <span class="section-number">04 / 04</span>
+            <h2>👥 Elencos Inscritos</h2>
+            <div class="squads-grid">
+
+                <div class="squad-card">
+                    <div class="squad-header">2° PD</div>
+                    <ul class="squad-list">
+                        <li>Gabigol</li><li>Thiago</li><li>Bernardo</li>
+                        <li>Mendes</li><li>Jão</li><li>Adati</li>
+                        <li>Natan</li><li>Caio</li><li>Mano Brawl</li>
+                        <li>Samuel</li><li>Landgraf</li><li>Tiago</li>
                     </ul>
                 </div>
 
-                <div class="elenco-card">
-                    <h3>3° GEO</h3>
-                    <ul>
-                        <li>Colo Colo</li>
-                        <li>Yuri</li>
-                        <li>Davi</li>
-                        <li>Japa</li>
-                        <li>Arthur</li>
-                        <li>Thiago</li>
-                        <li>Kenui</li>
-                        <li>Paparotte</li>
-                        <li>Eduardo</li>
-                        <li>Gabriel</li>
-                        <li>Heinzenberg</li>
-                        <li>Otávio</li>
+                <div class="squad-card">
+                    <div class="squad-header">3° GEO</div>
+                    <ul class="squad-list">
+                        <li>Colo Colo</li><li>Yuri</li><li>Davi</li>
+                        <li>Japa</li><li>Arthur</li><li>Thiago (Moskitão)</li>
+                        <li>Kenui</li><li>Paparotte</li><li>Eduardo</li>
+                        <li>Gabriel</li><li>Heinzenberg</li><li>Otávio</li>
                     </ul>
                 </div>
 
-                <div class="elenco-card">
-                    <h3>1° QPD</h3>
-                    <ul>
-                        <li>Bruno</li>
-                        <li>Rodrigo</li>
-                        <li>Enzo</li>
-                        <li>Mauro</li>
-                        <li>Leonardo</li>
-                        <li>Karolayne</li>
-                        <li>Rafael</li>
-                        <li>Nicolas</li>
-                        <li>Vitor</li>
-                        <li>Ronan</li>
-                        <li>Piva</li>
+                <div class="squad-card">
+                    <div class="squad-header">1° QPD</div>
+                    <ul class="squad-list">
+                        <li>Bruno</li><li>Rodrigo</li><li>Enzo</li>
+                        <li>Mauro</li><li>Leonardo</li><li>Karolayne</li>
+                        <li>Rafael</li><li>Nicolas</li><li>Vitor</li>
+                        <li>Ronan</li><li>Piva</li>
                     </ul>
                 </div>
 
-                <div class="elenco-card">
-                    <h3>1° MED</h3>
-                    <ul>
-                        <li>Julio</li>
-                        <li>Vitor</li>
-                        <li>Lucas</li>
-                        <li>Zullo</li>
-                        <li>Denadai</li>
-                        <li>Dolynho</li>
-                        <li>Davi</li>
-                        <li>Querubim</li>
-                        <li>Nathan</li>
-                        <li>Bruno</li>
+                <div class="squad-card">
+                    <div class="squad-header">1° MED</div>
+                    <ul class="squad-list">
+                        <li>Julio</li><li>Vitor</li><li>Lucas</li>
+                        <li>Zullo</li><li>Denadai</li><li>Dolynho (Dolly)</li>
+                        <li>Davi (Gordão)</li><li>Querubim</li><li>Nathan</li>
+                        <li>Bruno</li><li>Henrique</li>
                     </ul>
                 </div>
 
-                <div class="elenco-card">
-                    <h3>1° PD</h3>
-                    <ul>
-                        <li>Gabriel Manzatto</li>
-                        <li>Murilo</li>
-                        <li>Molina</li>
-                        <li>Rian</li>
-                        <li>Breno</li>
-                        <li>Heitor</li>
-                        <li>Miguel</li>
-                        <li>Joao Pedro</li>
-                        <li>Pedro H.</li>
+                <div class="squad-card">
+                    <div class="squad-header">1° PD</div>
+                    <ul class="squad-list">
+                        <li>Gabriel Manzatto</li><li>Murilo</li><li>Molina</li>
+                        <li>Rian</li><li>Breno</li><li>Heitor</li>
+                        <li>Miguel</li><li>Joao Pedro</li><li>Pedro H.</li>
                         <li>Bruno Jefte</li>
                     </ul>
                 </div>
 
             </div>
         </section>
+
     </div>
 
 </body>
