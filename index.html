@@ -28,9 +28,7 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         html { scroll-behavior: smooth; }
-
         body {
             font-family: 'Exo 2', sans-serif;
             background: var(--bg);
@@ -39,7 +37,6 @@
             overflow-x: hidden;
         }
 
-        /* ─── BACKGROUND GRID ─── */
         body::before {
             content: '';
             position: fixed;
@@ -55,10 +52,8 @@
         body::after {
             content: '';
             position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
             background: radial-gradient(ellipse at 30% 20%, rgba(138,43,226,0.06) 0%, transparent 50%),
                         radial-gradient(ellipse at 70% 80%, rgba(65,105,225,0.06) 0%, transparent 50%);
             pointer-events: none;
@@ -71,79 +66,53 @@
             to   { transform: translate(30px, 20px) rotate(3deg); }
         }
 
-        /* ─── NAV ─── */
         nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             background: rgba(10,10,15,0.85);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
-            padding: 0 30px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            padding: 0 30px; height: 56px;
+            display: flex; align-items: center; justify-content: space-between;
         }
 
         .nav-logo {
             font-family: 'Orbitron', monospace;
-            font-weight: 900;
-            font-size: 1rem;
+            font-weight: 900; font-size: 1rem;
             background: var(--grad-text);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 3px;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 6px;
-            list-style: none;
-        }
-
+        .nav-links { display: flex; gap: 6px; list-style: none; }
         .nav-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            padding: 6px 12px;
-            border-radius: 4px;
-            border: 1px solid transparent;
-            transition: all 0.2s;
+            color: var(--text-dim); text-decoration: none;
+            font-size: 0.75rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase;
+            padding: 6px 12px; border-radius: 4px;
+            border: 1px solid transparent; transition: all 0.2s;
         }
-
         .nav-links a:hover {
             color: var(--text);
             border-color: var(--border-bright);
             background: rgba(138,43,226,0.1);
         }
 
-        /* ─── HEADER ─── */
         header {
-            position: relative;
-            z-index: 1;
+            position: relative; z-index: 1;
             padding: 130px 20px 70px;
-            text-align: center;
-            overflow: hidden;
+            text-align: center; overflow: hidden;
         }
 
         .header-badge {
             display: inline-block;
             font-family: 'Orbitron', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 4px;
+            font-size: 0.65rem; letter-spacing: 4px;
             color: var(--purple-light);
             background: rgba(138,43,226,0.12);
             border: 1px solid rgba(138,43,226,0.3);
-            padding: 6px 18px;
-            border-radius: 100px;
-            margin-bottom: 24px;
-            text-transform: uppercase;
+            padding: 6px 18px; border-radius: 100px;
+            margin-bottom: 24px; text-transform: uppercase;
         }
 
         h1 {
@@ -153,195 +122,115 @@
             background: var(--grad-text);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 4px;
-            line-height: 1;
+            letter-spacing: 4px; line-height: 1;
             margin-bottom: 12px;
             filter: drop-shadow(0 0 40px rgba(138,43,226,0.5));
         }
 
         .header-sub {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 600;
+            color: var(--text-muted); font-size: 0.9rem;
+            letter-spacing: 3px; text-transform: uppercase; font-weight: 600;
         }
 
         .header-line {
-            width: 120px;
-            height: 2px;
+            width: 120px; height: 2px;
             background: var(--grad);
-            margin: 24px auto 0;
-            border-radius: 2px;
+            margin: 24px auto 0; border-radius: 2px;
             box-shadow: var(--glow-purple);
         }
 
-        /* ─── SECTION NAV DOTS ─── */
         .container {
             max-width: 1040px;
             margin: 0 auto;
             padding: 0 20px 80px;
-            position: relative;
-            z-index: 1;
+            position: relative; z-index: 1;
         }
 
-        /* ─── SECTION CARD ─── */
         .section-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
+            border-radius: 16px; padding: 32px;
             margin-bottom: 32px;
-            position: relative;
-            overflow: hidden;
+            position: relative; overflow: hidden;
             transition: border-color 0.3s;
         }
 
         .section-card::before {
             content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: var(--grad);
-            opacity: 0.7;
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 2px; background: var(--grad); opacity: 0.7;
         }
 
-        .section-card:hover {
-            border-color: var(--border-bright);
-        }
+        .section-card:hover { border-color: var(--border-bright); }
 
         .section-number {
-            position: absolute;
-            top: 20px;
-            right: 24px;
+            position: absolute; top: 20px; right: 24px;
             font-family: 'Orbitron', monospace;
-            font-size: 0.6rem;
-            color: var(--border-bright);
-            letter-spacing: 2px;
+            font-size: 0.6rem; color: var(--border-bright); letter-spacing: 2px;
         }
 
         h2 {
             font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            font-weight: 700; font-size: 1rem;
+            letter-spacing: 3px; text-transform: uppercase;
             background: var(--grad-text);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 28px;
-            padding-bottom: 16px;
+            margin-bottom: 28px; padding-bottom: 16px;
             border-bottom: 1px solid var(--border);
         }
 
-        /* ─── STANDINGS TABLE ─── */
         .table-wrap { overflow-x: auto; }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        thead tr {
-            background: rgba(138,43,226,0.08);
-        }
-
+        table { width: 100%; border-collapse: collapse; text-align: center; font-size: 0.9rem; }
+        thead tr { background: rgba(138,43,226,0.08); }
         th {
-            padding: 12px 10px;
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
+            padding: 12px 10px; color: var(--text-muted);
+            font-size: 0.7rem; letter-spacing: 2px;
+            text-transform: uppercase; font-weight: 700;
             font-family: 'Orbitron', monospace;
         }
-
-        td {
-            padding: 13px 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-        }
-
-        tbody tr {
-            transition: background 0.15s;
-        }
-
+        td { padding: 13px 10px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        tbody tr { transition: background 0.15s; }
         tbody tr:hover { background: rgba(138,43,226,0.06); }
 
-        .team-name {
-            text-align: left;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
-        }
-
-        .rank-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .rank-bar {
-            width: 3px;
-            height: 16px;
-            border-radius: 2px;
-            flex-shrink: 0;
-        }
-
+        .team-name { text-align: left; font-weight: 700; letter-spacing: 0.5px; white-space: nowrap; }
+        .rank-indicator { display: inline-flex; align-items: center; gap: 10px; }
+        .rank-bar { width: 3px; height: 16px; border-radius: 2px; flex-shrink: 0; }
         .rank-qual .rank-bar { background: var(--grad); box-shadow: var(--glow-purple); }
         .rank-out  .rank-bar { background: var(--text-muted); }
 
         .pts-cell {
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            font-size: 1rem;
+            font-family: 'Orbitron', monospace; font-weight: 700; font-size: 1rem;
             background: var(--grad-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         .sg-pos { color: #4ade80; font-weight: 700; }
         .sg-neg { color: #f87171; font-weight: 700; }
 
         .table-footnote {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            margin-top: 16px;
-            text-align: center;
-            padding-top: 12px;
-            border-top: 1px solid var(--border);
+            font-size: 0.78rem; color: var(--text-muted);
+            margin-top: 16px; text-align: center;
+            padding-top: 12px; border-top: 1px solid var(--border);
             letter-spacing: 0.5px;
         }
 
         .qual-badge {
-            display: inline-block;
-            font-size: 0.6rem;
-            font-family: 'Orbitron', monospace;
-            letter-spacing: 1px;
-            padding: 2px 7px;
-            border-radius: 3px;
+            display: inline-block; font-size: 0.6rem;
+            font-family: 'Orbitron', monospace; letter-spacing: 1px;
+            padding: 2px 7px; border-radius: 3px;
             background: rgba(138,43,226,0.2);
             border: 1px solid rgba(138,43,226,0.4);
-            color: var(--purple-light);
-            margin-left: 8px;
-            vertical-align: middle;
+            color: var(--purple-light); margin-left: 8px; vertical-align: middle;
         }
 
-        /* ─── STATS ─── */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } }
 
         .stat-panel {
             background: var(--surface-2);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
+            border-radius: 12px; overflow: hidden;
         }
 
         .stat-panel-header {
@@ -349,295 +238,138 @@
             background: rgba(138,43,226,0.1);
             border-bottom: 1px solid var(--border);
             font-family: 'Orbitron', monospace;
-            font-size: 0.72rem;
-            letter-spacing: 2px;
-            color: var(--text-dim);
-            text-transform: uppercase;
+            font-size: 0.72rem; letter-spacing: 2px;
+            color: var(--text-dim); text-transform: uppercase;
         }
 
         .stat-list { list-style: none; }
-
         .stat-item {
-            display: flex;
-            align-items: center;
+            display: flex; align-items: center;
             padding: 11px 18px;
             border-bottom: 1px solid rgba(255,255,255,0.03);
-            gap: 12px;
-            transition: background 0.15s;
+            gap: 12px; transition: background 0.15s;
         }
-
         .stat-item:hover { background: rgba(138,43,226,0.05); }
         .stat-item:last-child { border-bottom: none; }
-
-        .stat-rank {
-            font-family: 'Orbitron', monospace;
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            width: 18px;
-            text-align: right;
-            flex-shrink: 0;
-        }
-
+        .stat-rank { font-family: 'Orbitron', monospace; font-size: 0.65rem; color: var(--text-muted); width: 18px; text-align: right; flex-shrink: 0; }
         .stat-name { font-weight: 600; flex: 1; font-size: 0.9rem; }
         .stat-team { color: var(--text-muted); font-size: 0.75rem; }
-
         .stat-value {
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            font-size: 1.05rem;
+            font-family: 'Orbitron', monospace; font-weight: 700; font-size: 1.05rem;
             background: var(--grad-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
+        .stat-bar-wrap { width: 50px; height: 3px; background: rgba(255,255,255,0.06); border-radius: 2px; flex-shrink: 0; }
+        .stat-bar { height: 100%; border-radius: 2px; background: var(--grad); }
 
-        .stat-bar-wrap {
-            width: 50px;
-            height: 3px;
-            background: rgba(255,255,255,0.06);
-            border-radius: 2px;
-            flex-shrink: 0;
-        }
-
-        .stat-bar {
-            height: 100%;
-            border-radius: 2px;
-            background: var(--grad);
-        }
-
-        /* ─── ROUNDS ─── */
-        .round {
-            margin-bottom: 28px;
-        }
-
+        .round { margin-bottom: 28px; }
         .round:last-child { margin-bottom: 0; }
-
-        .round-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 16px;
-        }
-
+        .round-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
         .round-label {
-            font-family: 'Orbitron', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 3px;
-            font-weight: 700;
-            color: var(--text);
-            background: var(--grad);
-            padding: 5px 14px;
-            border-radius: 4px;
-            text-transform: uppercase;
+            font-family: 'Orbitron', monospace; font-size: 0.65rem;
+            letter-spacing: 3px; font-weight: 700; color: var(--text);
+            background: var(--grad); padding: 5px 14px; border-radius: 4px; text-transform: uppercase;
         }
+        .round-line { flex: 1; height: 1px; background: var(--border); }
 
-        .round-line {
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        /* ─── MATCH CARD ─── */
         .match {
             background: var(--surface-2);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px 24px;
-            margin-bottom: 12px;
-            position: relative;
-            overflow: hidden;
-            transition: border-color 0.2s, transform 0.2s;
+            border-radius: 12px; padding: 20px 24px;
+            margin-bottom: 12px; position: relative;
+            overflow: hidden; transition: border-color 0.2s, transform 0.2s;
         }
-
-        .match:hover {
-            border-color: var(--border-bright);
-            transform: translateY(-1px);
-        }
+        .match:hover { border-color: var(--border-bright); transform: translateY(-1px); }
 
         .match.played::after {
             content: 'ENCERRADO';
-            position: absolute;
-            top: 12px;
-            right: 14px;
-            font-family: 'Orbitron', monospace;
-            font-size: 0.55rem;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            border: 1px solid var(--border);
-            padding: 2px 7px;
-            border-radius: 3px;
+            position: absolute; top: 12px; right: 14px;
+            font-family: 'Orbitron', monospace; font-size: 0.55rem;
+            letter-spacing: 2px; color: var(--text-muted);
+            border: 1px solid var(--border); padding: 2px 7px; border-radius: 3px;
         }
 
         .match.upcoming::after {
             content: 'A JOGAR';
-            position: absolute;
-            top: 12px;
-            right: 14px;
-            font-family: 'Orbitron', monospace;
-            font-size: 0.55rem;
-            letter-spacing: 2px;
-            color: #4ade80;
-            border: 1px solid rgba(74,222,128,0.3);
-            padding: 2px 7px;
-            border-radius: 3px;
+            position: absolute; top: 12px; right: 14px;
+            font-family: 'Orbitron', monospace; font-size: 0.55rem;
+            letter-spacing: 2px; color: #4ade80;
+            border: 1px solid rgba(74,222,128,0.3); padding: 2px 7px; border-radius: 3px;
         }
 
         .scoreboard {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 14px;
+            display: flex; align-items: center;
+            justify-content: center; gap: 20px; margin-bottom: 14px;
         }
-
-        .team-side {
-            flex: 1;
-            text-align: center;
-        }
-
+        .team-side { flex: 1; text-align: center; }
         .team-tag {
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            font-size: clamp(0.75rem, 2vw, 1rem);
-            letter-spacing: 1px;
-            color: var(--text);
+            font-family: 'Orbitron', monospace; font-weight: 700;
+            font-size: clamp(0.75rem, 2vw, 1rem); letter-spacing: 1px; color: var(--text);
         }
-
-        .score-display {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 0;
-        }
-
+        .score-display { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
         .score-num {
-            font-family: 'Orbitron', monospace;
-            font-weight: 900;
+            font-family: 'Orbitron', monospace; font-weight: 900;
             font-size: clamp(1.6rem, 4vw, 2.2rem);
-            width: 52px;
-            text-align: center;
-            line-height: 1;
+            width: 52px; text-align: center; line-height: 1;
         }
-
         .score-home { color: var(--purple-light); text-shadow: 0 0 20px rgba(168,85,247,0.5); }
         .score-away { color: var(--blue-light); text-shadow: 0 0 20px rgba(96,165,250,0.4); }
-
-        .score-sep {
-            font-family: 'Orbitron', monospace;
-            font-weight: 300;
-            font-size: 1.4rem;
-            color: var(--text-muted);
-        }
-
+        .score-sep { font-family: 'Orbitron', monospace; font-weight: 300; font-size: 1.4rem; color: var(--text-muted); }
         .score-vs {
-            font-family: 'Orbitron', monospace;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            padding: 8px 16px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
+            font-family: 'Orbitron', monospace; font-size: 0.8rem;
+            color: var(--text-muted); letter-spacing: 2px;
+            padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px;
         }
 
-        /* ─── SCORERS ─── */
-        .scorers-row {
-            display: flex;
-            gap: 8px;
-            font-size: 0.8rem;
-        }
-
+        .scorers-row { display: flex; gap: 8px; font-size: 0.8rem; }
         .scorers-home, .scorers-away {
-            flex: 1;
-            padding: 8px 12px;
+            flex: 1; padding: 8px 12px;
             background: rgba(255,255,255,0.02);
-            border-radius: 6px;
-            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 6px; border: 1px solid rgba(255,255,255,0.04);
         }
-
-        .scorer-line {
-            display: flex;
-            align-items: baseline;
-            gap: 4px;
-            padding: 2px 0;
-            color: var(--text-dim);
-        }
-
+        .scorer-line { display: flex; align-items: baseline; gap: 4px; padding: 2px 0; color: var(--text-dim); }
         .scorer-icon { font-size: 0.9em; }
         .scorer-player { font-weight: 600; color: var(--text); }
         .scorer-assist { color: var(--text-muted); font-size: 0.75em; }
 
-        /* ─── SQUADS ─── */
-        .squads-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 16px;
-        }
-
+        .squads-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
         .squad-card {
             background: var(--surface-2);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
+            border-radius: 12px; overflow: hidden;
             transition: border-color 0.2s, transform 0.2s;
         }
-
-        .squad-card:hover {
-            border-color: var(--border-bright);
-            transform: translateY(-2px);
-        }
-
+        .squad-card:hover { border-color: var(--border-bright); transform: translateY(-2px); }
         .squad-header {
             padding: 14px 16px;
             background: rgba(138,43,226,0.1);
             border-bottom: 1px solid var(--border);
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-align: center;
+            font-family: 'Orbitron', monospace; font-weight: 700;
+            font-size: 0.8rem; letter-spacing: 2px; text-align: center;
             background: var(--grad-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
-        .squad-list {
-            list-style: none;
-            padding: 10px 0;
-        }
-
+        .squad-list { list-style: none; padding: 10px 0; }
         .squad-list li {
-            padding: 5px 16px;
-            font-size: 0.85rem;
-            color: var(--text-dim);
+            padding: 5px 16px; font-size: 0.85rem; color: var(--text-dim);
             border-bottom: 1px solid rgba(255,255,255,0.02);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.15s;
+            display: flex; align-items: center; gap: 8px; transition: color 0.15s;
         }
-
         .squad-list li:last-child { border-bottom: none; }
         .squad-list li:hover { color: var(--text); }
-
         .squad-list li::before {
-            content: '';
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: var(--grad);
-            flex-shrink: 0;
+            content: ''; width: 4px; height: 4px; border-radius: 50%;
+            background: var(--grad); flex-shrink: 0;
         }
 
-        /* ─── SCROLLBAR ─── */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
 
-        /* ─── ANIMATIONS ─── */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
         }
-
         .section-card { animation: fadeUp 0.5s ease both; }
         .section-card:nth-child(1) { animation-delay: 0.05s; }
         .section-card:nth-child(2) { animation-delay: 0.1s; }
@@ -654,7 +386,6 @@
 </head>
 <body>
 
-    <!-- NAV -->
     <nav>
         <span class="nav-logo">COCA CHAMP</span>
         <ul class="nav-links">
@@ -665,9 +396,8 @@
         </ul>
     </nav>
 
-    <!-- HEADER -->
     <header>
-        <div class="header-badge">Temporada 2025</div>
+        <div class="header-badge">Temporada 2026</div>
         <h1>COCA CHAMP 🏆</h1>
         <p class="header-sub">Fase de Grupos · 5 Rodadas</p>
         <div class="header-line"></div>
@@ -695,6 +425,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- 3° GEO: 6pts, 2J, 2V, GP8, GC5, SG+3 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-qual">
@@ -708,6 +439,21 @@
                             <td>8</td><td>5</td>
                             <td class="sg-pos">+3</td>
                         </tr>
+                        <!-- 1° QPD: 6pts, 2J, 2V, GP6, GC3, SG+3 -->
+                        <tr>
+                            <td class="team-name">
+                                <span class="rank-indicator rank-qual">
+                                    <span class="rank-bar"></span>
+                                    1° QPD
+                                </span>
+                                <span class="qual-badge">SF</span>
+                            </td>
+                            <td class="pts-cell">6</td>
+                            <td>2</td><td>2</td><td>0</td><td>0</td>
+                            <td>6</td><td>3</td>
+                            <td class="sg-pos">+3</td>
+                        </tr>
+                        <!-- 2° PD: 3pts, 2J, 1V, GP9, GC5, SG+4 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-qual">
@@ -721,31 +467,21 @@
                             <td>9</td><td>5</td>
                             <td class="sg-pos">+4</td>
                         </tr>
+                        <!-- 1° MED: 0pts, 2J, GP4, GC7, SG-3 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-qual">
                                     <span class="rank-bar"></span>
-                                    1° QPD
-                                </span>
-                                <span class="qual-badge">SF</span>
-                            </td>
-                            <td class="pts-cell">3</td>
-                            <td>1</td><td>1</td><td>0</td><td>0</td>
-                            <td>3</td><td>1</td>
-                            <td class="sg-pos">+2</td>
-                        </tr>
-                        <tr>
-                            <td class="team-name">
-                                <span class="rank-indicator rank-out">
-                                    <span class="rank-bar"></span>
                                     1° MED
                                 </span>
+                                <span class="qual-badge">SF</span>
                             </td>
                             <td class="pts-cell">0</td>
                             <td>2</td><td>0</td><td>0</td><td>2</td>
                             <td>4</td><td>7</td>
                             <td class="sg-neg">-3</td>
                         </tr>
+                        <!-- 1° PD: 0pts, 2J, GP3, GC10, SG-7 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-out">
@@ -754,9 +490,9 @@
                                 </span>
                             </td>
                             <td class="pts-cell">0</td>
-                            <td>1</td><td>0</td><td>0</td><td>1</td>
-                            <td>1</td><td>7</td>
-                            <td class="sg-neg">-6</td>
+                            <td>2</td><td>0</td><td>0</td><td>2</td>
+                            <td>3</td><td>10</td>
+                            <td class="sg-neg">-7</td>
                         </tr>
                     </tbody>
                 </table>
@@ -780,13 +516,13 @@
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:100%"></span></span>
                             <span class="stat-value">4</span>
                         </li>
-                        <!-- Otávio also rank 1 -->
                         <li class="stat-item">
                             <span class="stat-rank">1</span>
                             <span class="stat-name">Otávio <span class="stat-team">(3° GEO)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:100%"></span></span>
                             <span class="stat-value">4</span>
                         </li>
+                        <!-- Jefte agora tem 2 gols (1 anterior + 1 novo) -->
                         <li class="stat-item">
                             <span class="stat-rank">3</span>
                             <span class="stat-name">Piva <span class="stat-team">(1° QPD)</span></span>
@@ -806,62 +542,81 @@
                             <span class="stat-value">2</span>
                         </li>
                         <li class="stat-item">
-                            <span class="stat-rank">6</span>
+                            <span class="stat-rank">3</span>
+                            <span class="stat-name">Jefte <span class="stat-team">(1° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:50%"></span></span>
+                            <span class="stat-value">2</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">7</span>
                             <span class="stat-name">Heisenberg <span class="stat-team">(3° GEO)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
-                            <span class="stat-rank">6</span>
+                            <span class="stat-rank">7</span>
                             <span class="stat-name">Japa <span class="stat-team">(3° GEO)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
-                            <span class="stat-rank">6</span>
+                            <span class="stat-rank">7</span>
                             <span class="stat-name">Moskitão <span class="stat-team">(3° GEO)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
-                            <span class="stat-rank">6</span>
+                            <span class="stat-rank">7</span>
                             <span class="stat-name">Dolly <span class="stat-team">(1° MED)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
-                            <span class="stat-rank">6</span>
+                            <span class="stat-rank">7</span>
                             <span class="stat-name">Henrique <span class="stat-team">(1° MED)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
-                            <span class="stat-rank">6</span>
+                            <span class="stat-rank">7</span>
                             <span class="stat-name">Eduardo <span class="stat-team">(3° GEO)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
-                            <span class="stat-rank">6</span>
+                            <span class="stat-rank">7</span>
                             <span class="stat-name">Ronan <span class="stat-team">(1° QPD)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
-                            <span class="stat-rank">6</span>
+                            <span class="stat-rank">7</span>
                             <span class="stat-name">Samuel <span class="stat-team">(2° PD)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
-                            <span class="stat-rank">6</span>
+                            <span class="stat-rank">7</span>
                             <span class="stat-name">Landgraf <span class="stat-team">(2° PD)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
+                        <!-- Novos artilheiros da Rodada 4 -->
                         <li class="stat-item">
-                            <span class="stat-rank">6</span>
-                            <span class="stat-name">Jefte <span class="stat-team">(1° PD)</span></span>
+                            <span class="stat-rank">7</span>
+                            <span class="stat-name">Miguel <span class="stat-team">(1° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">7</span>
+                            <span class="stat-name">Enzo <span class="stat-team">(1° QPD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">7</span>
+                            <span class="stat-name">Rodrigo <span class="stat-team">(1° QPD)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
@@ -935,6 +690,19 @@
                         <li class="stat-item">
                             <span class="stat-rank">5</span>
                             <span class="stat-name">Mendes</span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <!-- Novas assistências Rodada 4 -->
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Ryan <span class="stat-team">(1° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Enzo <span class="stat-team">(1° QPD)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
@@ -1086,11 +854,27 @@
                     <div class="round-line"></div>
                 </div>
 
-                <div class="match upcoming">
+                <!-- 1° PD 2 × 3 1° QPD — ENCERRADO -->
+                <div class="match played">
                     <div class="scoreboard">
                         <div class="team-side"><div class="team-tag">1° PD</div></div>
-                        <div class="score-display"><span class="score-vs">VS</span></div>
+                        <div class="score-display">
+                            <span class="score-num score-home">2</span>
+                            <span class="score-sep">×</span>
+                            <span class="score-num score-away">3</span>
+                        </div>
                         <div class="team-side"><div class="team-tag">1° QPD</div></div>
+                    </div>
+                    <div class="scorers-row">
+                        <div class="scorers-home">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Miguel</span><span class="scorer-assist"> 👟 Ryan</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Jefte</span></div>
+                        </div>
+                        <div class="scorers-away">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Enzo</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Rodrigo</span><span class="scorer-assist"> 👟 Enzo</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Ryan (gol contra)</span></div>
+                        </div>
                     </div>
                 </div>
 
@@ -1179,7 +963,7 @@
                     <div class="squad-header">1° PD</div>
                     <ul class="squad-list">
                         <li>Gabriel Manzatto</li><li>Murilo</li><li>Molina</li>
-                        <li>Rian</li><li>Breno</li><li>Heitor</li>
+                        <li>Ryan</li><li>Breno</li><li>Heitor</li>
                         <li>Miguel</li><li>Joao Pedro</li><li>Pedro H.</li>
                         <li>Bruno Jefte</li>
                     </ul>
@@ -1189,6 +973,5 @@
         </section>
 
     </div>
-
 </body>
 </html>
