@@ -207,6 +207,7 @@
 
         .sg-pos { color: #4ade80; font-weight: 700; }
         .sg-neg { color: #f87171; font-weight: 700; }
+        .sg-zero { color: var(--text-muted); font-weight: 700; }
 
         .table-footnote {
             font-size: 0.78rem; color: var(--text-muted);
@@ -342,7 +343,6 @@
         .squad-card:hover { border-color: var(--border-bright); transform: translateY(-2px); }
         .squad-header {
             padding: 14px 16px;
-            background: rgba(138,43,226,0.1);
             border-bottom: 1px solid var(--border);
             font-family: 'Orbitron', monospace; font-weight: 700;
             font-size: 0.8rem; letter-spacing: 2px; text-align: center;
@@ -405,7 +405,6 @@
 
     <div class="container">
 
-        <!-- CLASSIFICAÇÃO -->
         <section class="section-card" id="classificacao">
             <span class="section-number">01 / 04</span>
             <h2>⚡ Tabela de Classificação</h2>
@@ -425,7 +424,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- 3° GEO: 6pts, 2J, 2V, GP8, GC5, SG+3 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-qual">
@@ -434,12 +432,11 @@
                                 </span>
                                 <span class="qual-badge">SF</span>
                             </td>
-                            <td class="pts-cell">6</td>
-                            <td>2</td><td>2</td><td>0</td><td>0</td>
-                            <td>8</td><td>5</td>
+                            <td class="pts-cell">7</td>
+                            <td>3</td><td>2</td><td>1</td><td>0</td>
+                            <td>11</td><td>8</td>
                             <td class="sg-pos">+3</td>
                         </tr>
-                        <!-- 1° QPD: 6pts, 2J, 2V, GP6, GC3, SG+3 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-qual">
@@ -448,12 +445,11 @@
                                 </span>
                                 <span class="qual-badge">SF</span>
                             </td>
-                            <td class="pts-cell">6</td>
-                            <td>2</td><td>2</td><td>0</td><td>0</td>
-                            <td>6</td><td>3</td>
+                            <td class="pts-cell">7</td>
+                            <td>3</td><td>2</td><td>1</td><td>0</td>
+                            <td>9</td><td>6</td>
                             <td class="sg-pos">+3</td>
                         </tr>
-                        <!-- 2° PD: 3pts, 2J, 1V, GP9, GC5, SG+4 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-qual">
@@ -462,12 +458,11 @@
                                 </span>
                                 <span class="qual-badge">SF</span>
                             </td>
-                            <td class="pts-cell">3</td>
-                            <td>2</td><td>1</td><td>0</td><td>1</td>
-                            <td>9</td><td>5</td>
-                            <td class="sg-pos">+4</td>
+                            <td class="pts-cell">6</td>
+                            <td>3</td><td>2</td><td>0</td><td>1</td>
+                            <td>14</td><td>6</td>
+                            <td class="sg-pos">+8</td>
                         </tr>
-                        <!-- 1° MED: 0pts, 2J, GP4, GC7, SG-3 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-qual">
@@ -477,11 +472,10 @@
                                 <span class="qual-badge">SF</span>
                             </td>
                             <td class="pts-cell">0</td>
-                            <td>2</td><td>0</td><td>0</td><td>2</td>
-                            <td>4</td><td>7</td>
-                            <td class="sg-neg">-3</td>
+                            <td>3</td><td>0</td><td>0</td><td>3</td>
+                            <td>5</td><td>12</td>
+                            <td class="sg-neg">-7</td>
                         </tr>
-                        <!-- 1° PD: 0pts, 2J, GP3, GC10, SG-7 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-out">
@@ -497,16 +491,14 @@
                     </tbody>
                 </table>
             </div>
-            <p class="table-footnote">🔷 Os 4 primeiros avançam para a Semifinal (Mata-mata em Jogo Único) &nbsp;|&nbsp; SF = Classificado para Semifinal</p>
+            <p class="table-footnote">🔷 Os 4 primeiros avançam para a Semifinal · Desempate: PTS → SG → GP &nbsp;|&nbsp; SF = Classificado para Semifinal</p>
         </section>
 
-        <!-- ESTATÍSTICAS -->
         <section class="section-card" id="estatisticas">
             <span class="section-number">02 / 04</span>
             <h2>📊 Estatísticas Gerais</h2>
             <div class="stats-grid">
 
-                <!-- Artilheiros -->
                 <div class="stat-panel">
                     <div class="stat-panel-header">⚽ Artilheiros</div>
                     <ul class="stat-list">
@@ -514,196 +506,228 @@
                             <span class="stat-rank">1</span>
                             <span class="stat-name">Caio <span class="stat-team">(2° PD)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:100%"></span></span>
-                            <span class="stat-value">4</span>
+                            <span class="stat-value">6</span>
                         </li>
                         <li class="stat-item">
-                            <span class="stat-rank">1</span>
+                            <span class="stat-rank">2</span>
                             <span class="stat-name">Otávio <span class="stat-team">(3° GEO)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:100%"></span></span>
-                            <span class="stat-value">4</span>
-                        </li>
-                        <!-- Jefte agora tem 2 gols (1 anterior + 1 novo) -->
-                        <li class="stat-item">
-                            <span class="stat-rank">3</span>
-                            <span class="stat-name">Piva <span class="stat-team">(1° QPD)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:50%"></span></span>
-                            <span class="stat-value">2</span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:83%"></span></span>
+                            <span class="stat-value">5</span>
                         </li>
                         <li class="stat-item">
                             <span class="stat-rank">3</span>
                             <span class="stat-name">Mendes <span class="stat-team">(2° PD)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:50%"></span></span>
-                            <span class="stat-value">2</span>
+                            <span class="stat-value">3</span>
                         </li>
                         <li class="stat-item">
                             <span class="stat-rank">3</span>
-                            <span class="stat-name">Davi <span class="stat-team">(1° MED)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:50%"></span></span>
-                            <span class="stat-value">2</span>
-                        </li>
-                        <li class="stat-item">
-                            <span class="stat-rank">3</span>
-                            <span class="stat-name">Jefte <span class="stat-team">(1° PD)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:50%"></span></span>
-                            <span class="stat-value">2</span>
-                        </li>
-                        <li class="stat-item">
-                            <span class="stat-rank">7</span>
-                            <span class="stat-name">Heisenberg <span class="stat-team">(3° GEO)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
-                            <span class="stat-value">1</span>
-                        </li>
-                        <li class="stat-item">
-                            <span class="stat-rank">7</span>
-                            <span class="stat-name">Japa <span class="stat-team">(3° GEO)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
-                            <span class="stat-value">1</span>
-                        </li>
-                        <li class="stat-item">
-                            <span class="stat-rank">7</span>
-                            <span class="stat-name">Moskitão <span class="stat-team">(3° GEO)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
-                            <span class="stat-value">1</span>
-                        </li>
-                        <li class="stat-item">
-                            <span class="stat-rank">7</span>
-                            <span class="stat-name">Dolly <span class="stat-team">(1° MED)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
-                            <span class="stat-value">1</span>
-                        </li>
-                        <li class="stat-item">
-                            <span class="stat-rank">7</span>
-                            <span class="stat-name">Henrique <span class="stat-team">(1° MED)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
-                            <span class="stat-value">1</span>
-                        </li>
-                        <li class="stat-item">
-                            <span class="stat-rank">7</span>
-                            <span class="stat-name">Eduardo <span class="stat-team">(3° GEO)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
-                            <span class="stat-value">1</span>
-                        </li>
-                        <li class="stat-item">
-                            <span class="stat-rank">7</span>
-                            <span class="stat-name">Ronan <span class="stat-team">(1° QPD)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
-                            <span class="stat-value">1</span>
-                        </li>
-                        <li class="stat-item">
-                            <span class="stat-rank">7</span>
-                            <span class="stat-name">Samuel <span class="stat-team">(2° PD)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
-                            <span class="stat-value">1</span>
-                        </li>
-                        <li class="stat-item">
-                            <span class="stat-rank">7</span>
-                            <span class="stat-name">Landgraf <span class="stat-team">(2° PD)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
-                            <span class="stat-value">1</span>
-                        </li>
-                        <!-- Novos artilheiros da Rodada 4 -->
-                        <li class="stat-item">
-                            <span class="stat-rank">7</span>
-                            <span class="stat-name">Miguel <span class="stat-team">(1° PD)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
-                            <span class="stat-value">1</span>
-                        </li>
-                        <li class="stat-item">
-                            <span class="stat-rank">7</span>
-                            <span class="stat-name">Enzo <span class="stat-team">(1° QPD)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
-                            <span class="stat-value">1</span>
-                        </li>
-                        <li class="stat-item">
-                            <span class="stat-rank">7</span>
                             <span class="stat-name">Rodrigo <span class="stat-team">(1° QPD)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:50%"></span></span>
+                            <span class="stat-value">3</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Piva <span class="stat-team">(1° QPD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">2</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Davi <span class="stat-team">(1° MED)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">2</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Jefte <span class="stat-team">(1° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">2</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Tiago Basso<span class="stat-team">(2° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">2</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Gabriel <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-value">2</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">10</span>
+                            <span class="stat-name">Eduardo <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:16%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">10</span>
+                            <span class="stat-name">Heisenberg <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:16%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">10</span>
+                            <span class="stat-name">Japa <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:16%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">10</span>
+                            <span class="stat-name">Moskitão <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:16%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">10</span>
+                            <span class="stat-name">Dolly <span class="stat-team">(1° MED)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:16%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">10</span>
+                            <span class="stat-name">Henrique <span class="stat-team">(1° MED)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:16%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">10</span>
+                            <span class="stat-name">Nathan <span class="stat-team">(1° MED)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:16%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">10</span>
+                            <span class="stat-name">Ronan <span class="stat-team">(1° QPD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:16%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">10</span>
+                            <span class="stat-name">Arthur <span class="stat-team">(1° QPD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:16%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">10</span>
+                            <span class="stat-name">Enzo <span class="stat-team">(1° QPD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:16%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">10</span>
+                            <span class="stat-name">Samuel <span class="stat-team">(2° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:16%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">10</span>
+                            <span class="stat-name">Landgraf <span class="stat-team">(2° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:16%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">10</span>
+                            <span class="stat-name">Miguel <span class="stat-team">(1° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:16%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Assistências -->
                 <div class="stat-panel">
                     <div class="stat-panel-header">👟 Garçons (Assistências)</div>
                     <ul class="stat-list">
                         <li class="stat-item">
                             <span class="stat-rank">1</span>
-                            <span class="stat-name">Tiago Basso</span>
+                            <span class="stat-name">Tiago Basso <span class="stat-team">(2° PD)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:100%"></span></span>
-                            <span class="stat-value">3</span>
+                            <span class="stat-value">5</span>
                         </li>
                         <li class="stat-item">
-                            <span class="stat-rank">1</span>
-                            <span class="stat-name">Kenui</span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:100%"></span></span>
-                            <span class="stat-value">3</span>
+                            <span class="stat-rank">2</span>
+                            <span class="stat-name">Caio <span class="stat-team">(2° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:80%"></span></span>
+                            <span class="stat-value">4</span>
                         </li>
                         <li class="stat-item">
-                            <span class="stat-rank">1</span>
-                            <span class="stat-name">Rodrigo</span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:100%"></span></span>
-                            <span class="stat-value">3</span>
+                            <span class="stat-rank">2</span>
+                            <span class="stat-name">Rodrigo <span class="stat-team">(1° QPD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:80%"></span></span>
+                            <span class="stat-value">4</span>
                         </li>
                         <li class="stat-item">
                             <span class="stat-rank">4</span>
-                            <span class="stat-name">Caio</span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:66%"></span></span>
-                            <span class="stat-value">2</span>
+                            <span class="stat-name">Kenui <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:60%"></span></span>
+                            <span class="stat-value">3</span>
                         </li>
                         <li class="stat-item">
                             <span class="stat-rank">5</span>
-                            <span class="stat-name">Moskitão</span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-name">Moskitão <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:20%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
                             <span class="stat-rank">5</span>
-                            <span class="stat-name">Japa</span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-name">Japa <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:20%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
                             <span class="stat-rank">5</span>
-                            <span class="stat-name">Dolly</span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-name">Eduardo <span class="stat-team">(3° GEO)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:20%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
                             <span class="stat-rank">5</span>
-                            <span class="stat-name">Denadai</span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-name">Dolly <span class="stat-team">(1° MED)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:20%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
                             <span class="stat-rank">5</span>
-                            <span class="stat-name">Davi</span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-name">Denadai <span class="stat-team">(1° MED)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:20%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
                             <span class="stat-rank">5</span>
-                            <span class="stat-name">Breno</span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-name">Davi <span class="stat-team">(1° MED)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:20%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
                             <span class="stat-rank">5</span>
-                            <span class="stat-name">Mendes</span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-name">Vitor <span class="stat-team">(1° MED)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:20%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
-                        <!-- Novas assistências Rodada 4 -->
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Breno <span class="stat-team">(1° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:20%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
                         <li class="stat-item">
                             <span class="stat-rank">5</span>
                             <span class="stat-name">Ryan <span class="stat-team">(1° PD)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:20%"></span></span>
+                            <span class="stat-value">1</span>
+                        </li>
+                        <li class="stat-item">
+                            <span class="stat-rank">5</span>
+                            <span class="stat-name">Mendes <span class="stat-team">(2° PD)</span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:20%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                         <li class="stat-item">
                             <span class="stat-rank">5</span>
                             <span class="stat-name">Enzo <span class="stat-team">(1° QPD)</span></span>
-                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:33%"></span></span>
+                            <span class="stat-bar-wrap"><span class="stat-bar" style="width:20%"></span></span>
                             <span class="stat-value">1</span>
                         </li>
                     </ul>
@@ -735,11 +759,11 @@
                     </div>
                     <div class="scorers-row">
                         <div class="scorers-home">
-                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Otávio</span><span class="scorer-assist">(x3)</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Otávio</span><span class="scorer-assist"> (x3)</span></div>
                             <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Eduardo</span></div>
                         </div>
                         <div class="scorers-away">
-                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Arthur (gol contra)</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Arthur</span><span class="scorer-assist"> (gol contra)</span></div>
                             <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Mendes</span></div>
                         </div>
                     </div>
@@ -757,7 +781,7 @@
                     </div>
                     <div class="scorers-row">
                         <div class="scorers-home">
-                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Piva</span><span class="scorer-assist">(x2)</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Piva</span><span class="scorer-assist"> (x2)</span></div>
                             <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Ronan</span></div>
                         </div>
                         <div class="scorers-away">
@@ -786,10 +810,10 @@
                     </div>
                     <div class="scorers-row">
                         <div class="scorers-home">
-                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Caio</span><span class="scorer-assist">(x4)</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Caio</span><span class="scorer-assist"> (x4)</span></div>
                             <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Samuel</span></div>
                             <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Mendes</span></div>
-                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Land Graf</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Landgraf</span></div>
                         </div>
                         <div class="scorers-away">
                             <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Jefte</span></div>
@@ -816,28 +840,20 @@
                         </div>
                         <div class="scorers-away">
                             <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Henrique</span><span class="scorer-assist"> 👟 Dolly</span></div>
-                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Davi</span></div>
-                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Davi</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Davi</span><span class="scorer-assist"> (x2)</span></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- RODADA 3 -->
+            <!-- RODADA 3 — CORRIGIDA: 1°PD vs 1°MED (não 2°PD) -->
             <div class="round">
                 <div class="round-header">
                     <span class="round-label">Rodada 3</span>
                     <div class="round-line"></div>
                 </div>
 
-                <div class="match upcoming">
-                    <div class="scoreboard">
-                        <div class="team-side"><div class="team-tag">3° GEO</div></div>
-                        <div class="score-display"><span class="score-vs">VS</span></div>
-                        <div class="team-side"><div class="team-tag">1° QPD</div></div>
-                    </div>
-                </div>
-
+                <!-- CORRIGIDO: era 2°PD 5×1 1°MED, agora é 1°PD vs 1°MED -->
                 <div class="match upcoming">
                     <div class="scoreboard">
                         <div class="team-side"><div class="team-tag">1° PD</div></div>
@@ -845,16 +861,37 @@
                         <div class="team-side"><div class="team-tag">1° MED</div></div>
                     </div>
                 </div>
+
+                <div class="match played">
+                    <div class="scoreboard">
+                        <div class="team-side"><div class="team-tag">1° QPD</div></div>
+                        <div class="score-display">
+                            <span class="score-num score-home">3</span>
+                            <span class="score-sep">×</span>
+                            <span class="score-num score-away">3</span>
+                        </div>
+                        <div class="team-side"><div class="team-tag">3° GEO</div></div>
+                    </div>
+                    <div class="scorers-row">
+                        <div class="scorers-home">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Rodrigo</span><span class="scorer-assist"> (x2) 👟 Rodrigo</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Arthur</span></div>
+                        </div>
+                        <div class="scorers-away">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Gabriel</span><span class="scorer-assist"> (x2)</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Otávio</span><span class="scorer-assist"> 👟 Eduardo</span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- RODADA 4 -->
+            <!-- RODADA 4 — 2°PD vs 1°MED movido para cá -->
             <div class="round">
                 <div class="round-header">
                     <span class="round-label">Rodada 4</span>
                     <div class="round-line"></div>
                 </div>
 
-                <!-- 1° PD 2 × 3 1° QPD — ENCERRADO -->
                 <div class="match played">
                     <div class="scoreboard">
                         <div class="team-side"><div class="team-tag">1° PD</div></div>
@@ -873,16 +910,31 @@
                         <div class="scorers-away">
                             <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Enzo</span></div>
                             <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Rodrigo</span><span class="scorer-assist"> 👟 Enzo</span></div>
-                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Ryan (gol contra)</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Ryan</span><span class="scorer-assist"> (gol contra)</span></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="match upcoming">
+                <!-- CORRIGIDO: 2°PD vs 1°MED pertence à R4 -->
+                <div class="match played">
                     <div class="scoreboard">
                         <div class="team-side"><div class="team-tag">2° PD</div></div>
-                        <div class="score-display"><span class="score-vs">VS</span></div>
+                        <div class="score-display">
+                            <span class="score-num score-home">5</span>
+                            <span class="score-sep">×</span>
+                            <span class="score-num score-away">1</span>
+                        </div>
                         <div class="team-side"><div class="team-tag">1° MED</div></div>
+                    </div>
+                    <div class="scorers-row">
+                        <div class="scorers-home">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Caio</span><span class="scorer-assist"> (x2) 👟 Tiago (x2)</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Tiago</span><span class="scorer-assist"> (x2) 👟 Caio (x2)</span></div>
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Mendes</span></div>
+                        </div>
+                        <div class="scorers-away">
+                            <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Nathan</span><span class="scorer-assist"> 👟 Vitor</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
