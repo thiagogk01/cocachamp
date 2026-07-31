@@ -541,6 +541,19 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
+        /* Winner highlight in bracket */
+        .bk-team.winner {
+            border-color: rgba(74,222,128,0.5);
+            box-shadow: 0 0 18px rgba(74,222,128,0.15);
+        }
+        .bk-team.winner .bk-team-name { color: #4ade80; }
+        .bk-team.winner .bk-score { -webkit-text-fill-color: #4ade80; background: none; }
+        .bk-pen-note {
+            font-family: 'Orbitron', monospace; font-size: 0.5rem;
+            letter-spacing: 1px; color: #fbbf24;
+            text-align: center; margin-top: 2px;
+        }
+
         /* Mobile bracket */
         @media (max-width: 700px) {
             .bracket-grid { flex-direction: column; align-items: center; gap: 20px; }
@@ -592,7 +605,7 @@
     <header>
         <div class="header-badge">Temporada 2026</div>
         <h1>COCA CHAMP 🏆</h1>
-        <p class="header-sub">Fase de Grupos Encerrada · Fase Final</p>
+        <p class="header-sub">Fase Final Encerrada · Campeão: 1° QPD</p>
         <div class="header-line"></div>
     </header>
 
@@ -707,14 +720,10 @@
             </div>
 
             <!--
-                Layout visual:
-                3° GEO  ──┐
-                          ├── SF1 ──┐
-                1° MED  ──┘         │
-                                    ├── FINAL ── 🏆
-                1° QPD  ──┐         │
-                          ├── SF2 ──┘
-                2° PD   ──┘
+                Resultado:
+                3° GEO 4x0 1° MED  → GEO avança
+                1° QPD 3x3 2° PD (QPD venc. pênaltis) → QPD avança
+                FINAL: 3° GEO 3x3 1° QPD (QPD venc. pênaltis) → QPD CAMPEÃO
             -->
             <div class="bracket-grid">
 
@@ -724,15 +733,15 @@
                     <!-- SF1 -->
                     <div class="bk-sf-match">
                         <div class="bk-sf-match-label">SEMIFINAL 1</div>
-                        <div class="bk-team">
+                        <div class="bk-team winner">
                             <span class="bk-seed">1°</span>
                             <span class="bk-team-name">3° GEO</span>
-                            <span class="bk-score tbd">–</span>
+                            <span class="bk-score">4</span>
                         </div>
                         <div class="bk-team">
                             <span class="bk-seed">4°</span>
                             <span class="bk-team-name">1° MED</span>
-                            <span class="bk-score tbd">–</span>
+                            <span class="bk-score">0</span>
                         </div>
                     </div>
 
@@ -741,16 +750,17 @@
                     <!-- SF2 -->
                     <div class="bk-sf-match">
                         <div class="bk-sf-match-label">SEMIFINAL 2</div>
-                        <div class="bk-team">
+                        <div class="bk-team winner">
                             <span class="bk-seed">2°</span>
                             <span class="bk-team-name">1° QPD</span>
-                            <span class="bk-score tbd">–</span>
+                            <span class="bk-score">3</span>
                         </div>
                         <div class="bk-team">
                             <span class="bk-seed">3°</span>
                             <span class="bk-team-name">2° PD</span>
-                            <span class="bk-score tbd">–</span>
+                            <span class="bk-score">3</span>
                         </div>
+                        <div class="bk-pen-note">QPD venc. nos pênaltis</div>
                     </div>
 
                 </div>
@@ -803,14 +813,15 @@
                     <div class="bk-final-label">⚡ FINAL</div>
                     <div class="bk-team final">
                         <span class="bk-seed">VEN</span>
-                        <span class="bk-team-name">Vencedor SF1</span>
-                        <span class="bk-score tbd">–</span>
+                        <span class="bk-team-name">3° GEO</span>
+                        <span class="bk-score">3</span>
                     </div>
-                    <div class="bk-team final">
+                    <div class="bk-team final winner">
                         <span class="bk-seed">VEN</span>
-                        <span class="bk-team-name">Vencedor SF2</span>
-                        <span class="bk-score tbd">–</span>
+                        <span class="bk-team-name">1° QPD</span>
+                        <span class="bk-score">3</span>
                     </div>
+                    <div class="bk-pen-note">QPD venc. nos pênaltis</div>
                 </div>
 
                 <!-- SVG CONNECTOR: FINAL → CHAMPION -->
@@ -830,7 +841,7 @@
                     <div class="bk-trophy">🏆</div>
                     <div class="bk-champ-slot">
                         <span class="bk-champ-slot-label">CAMPEÃO</span>
-                        <span class="bk-champ-slot-name">???</span>
+                        <span class="bk-champ-slot-name">1° QPD</span>
                     </div>
                 </div>
 
@@ -1033,12 +1044,6 @@
                 <div class="stat-panel">
                     <div class="stat-panel-header">👟 Garçons (Assistências)</div>
                     <ul class="stat-list">
-                        <!-- Tiago: R4(Caio x2 = 2 assists) + original 3 from R2 = original was 5? 
-                             Actually from original HTML: Tiago had 5, now R4 "Caio (x2) 👟 Tiago (x2)" = 2 more = 7. 
-                             But wait, was R4 already in the HTML? Yes, R4 was already in the original. 
-                             The instructions say to add R3 and R5. R3 says: Caio 2gols, Tiago assists x2 & Tiago 2gols, Caio assists x2.
-                             So R3 adds: +2 assists for Tiago, +2 assists for Caio.
-                             Original: Tiago=5, Caio=4. After R3: Tiago=7, Caio=6. -->
                         <li class="stat-item">
                             <span class="stat-rank">1</span>
                             <span class="stat-name">Tiago Basso <span class="stat-team">(2° PD)</span></span>
@@ -1051,52 +1056,42 @@
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:86%"></span></span>
                             <span class="stat-value">4</span>
                         </li>
-                        <!-- Rodrigo QPD: original=4, no new assists → 4 -->
                         <li class="stat-item">
                             <span class="stat-rank">3</span>
                             <span class="stat-name">Rodrigo <span class="stat-team">(1° QPD)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:57%"></span></span>
                             <span class="stat-value">4</span>
                         </li>
-                        <!-- Kenui: original=3, no new → 3 -->
                         <li class="stat-item">
                             <span class="stat-rank">4</span>
                             <span class="stat-name">Kenui <span class="stat-team">(3° GEO)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:43%"></span></span>
                             <span class="stat-value">3</span>
                         </li>
-                        <!-- Vitor MED: original=1 + R5(Nathan assist) +1 (QPD R5 Vitor assist for Bruno) = 3 -->
                         <li class="stat-item">
                             <span class="stat-rank">5</span>
                             <span class="stat-name">Vitor <span class="stat-team">(1° MED)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:43%"></span></span>
                             <span class="stat-value">2</span>
                         </li>
-                        <!-- Denadai: original=1 + R5 gol assist (+1 manual) + correction(+1) = 3 
-                             Actually: R5 instructions say "Davi Miguel (Gordão)" has an assist in 1MED 3-0 1PD.
-                             Denadai: R5 gol scored, not listed as providing assist.
-                             Manual correction: +1 assist for Denadai. So original 1 + 1 manual = 2. -->
                         <li class="stat-item">
                             <span class="stat-rank">6</span>
                             <span class="stat-name">Denadai <span class="stat-team">(1° MED)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:29%"></span></span>
                             <span class="stat-value">2</span>
                         </li>
-                        <!-- Dolly: original=1 + correction(+1) = 2 -->
                         <li class="stat-item">
                             <span class="stat-rank">6</span>
                             <span class="stat-name">Dolly <span class="stat-team">(1° MED)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:29%"></span></span>
                             <span class="stat-value">2</span>
                         </li>
-                        <!-- Davi Miguel (Gordão): R5 assist = 1 (new) -->
                         <li class="stat-item">
                             <span class="stat-rank">6</span>
                             <span class="stat-name">Davi Miguel (Gordão) <span class="stat-team">(1° MED)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:14%"></span></span>
                             <span class="stat-value">2</span>
                         </li>
-                        <!-- All original 1-assist players -->
                         <li class="stat-item">
                             <span class="stat-rank">8</span>
                             <span class="stat-name">Moskitão <span class="stat-team">(3° GEO)</span></span>
@@ -1398,6 +1393,82 @@
                         </div>
                         <div class="scorers-away">
                             <div class="scorer-line"><span class="scorer-icon">⚽</span><span class="scorer-player">Bruno</span><span class="scorer-assist"> 👟 Vitor</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEMIFINAIS -->
+            <div class="round">
+                <div class="round-header">
+                    <span class="round-label">Semifinais</span>
+                    <div class="round-line"></div>
+                </div>
+
+                <div class="match played">
+                    <div class="scoreboard">
+                        <div class="team-side"><div class="team-tag">3° GEO</div></div>
+                        <div class="score-display">
+                            <span class="score-num score-home">4</span>
+                            <span class="score-sep">×</span>
+                            <span class="score-num score-away">0</span>
+                        </div>
+                        <div class="team-side"><div class="team-tag">1° MED</div></div>
+                    </div>
+                    <div class="scorers-row">
+                        <div class="scorers-home">
+                            <div class="scorer-line"><span class="scorer-icon">ℹ️</span><span class="scorer-assist">GEO avança à final</span></div>
+                        </div>
+                        <div class="scorers-away">
+                            <div class="scorer-line"><span class="scorer-icon">ℹ️</span><span class="scorer-assist">Eliminado</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="match played">
+                    <div class="scoreboard">
+                        <div class="team-side"><div class="team-tag">1° QPD</div></div>
+                        <div class="score-display">
+                            <span class="score-num score-home">3</span>
+                            <span class="score-sep">×</span>
+                            <span class="score-num score-away">3</span>
+                        </div>
+                        <div class="team-side"><div class="team-tag">2° PD</div></div>
+                    </div>
+                    <div class="scorers-row">
+                        <div class="scorers-home">
+                            <div class="scorer-line"><span class="scorer-icon">ℹ️</span><span class="scorer-assist">QPD vence nos pênaltis e avança à final</span></div>
+                        </div>
+                        <div class="scorers-away">
+                            <div class="scorer-line"><span class="scorer-icon">ℹ️</span><span class="scorer-assist">Eliminado nos pênaltis</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FINAL -->
+            <div class="round">
+                <div class="round-header">
+                    <span class="round-label">Final 🏆</span>
+                    <div class="round-line"></div>
+                </div>
+
+                <div class="match played">
+                    <div class="scoreboard">
+                        <div class="team-side"><div class="team-tag">3° GEO</div></div>
+                        <div class="score-display">
+                            <span class="score-num score-home">3</span>
+                            <span class="score-sep">×</span>
+                            <span class="score-num score-away">3</span>
+                        </div>
+                        <div class="team-side"><div class="team-tag">1° QPD</div></div>
+                    </div>
+                    <div class="scorers-row">
+                        <div class="scorers-home">
+                            <div class="scorer-line"><span class="scorer-icon">ℹ️</span><span class="scorer-assist">Vice-campeão</span></div>
+                        </div>
+                        <div class="scorers-away">
+                            <div class="scorer-line"><span class="scorer-icon">🏆</span><span class="scorer-assist">QPD vence nos pênaltis — CAMPEÃO!</span></div>
                         </div>
                     </div>
                 </div>
