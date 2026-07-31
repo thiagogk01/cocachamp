@@ -73,6 +73,7 @@
             border-bottom: 1px solid var(--border);
             padding: 0 30px; height: 56px;
             display: flex; align-items: center; justify-content: space-between;
+            gap: 16px;
         }
 
         .nav-logo {
@@ -82,6 +83,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 3px;
+            flex-shrink: 0;
         }
 
         .nav-links { display: flex; gap: 6px; list-style: none; }
@@ -97,6 +99,105 @@
             border-color: var(--border-bright);
             background: rgba(138,43,226,0.1);
         }
+
+        .nav-right { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+
+        /* ===== SEASON SELECTOR ===== */
+        .season-select {
+            position: relative;
+        }
+
+        .season-select-btn {
+            display: flex; align-items: center; gap: 8px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 7px 12px;
+            cursor: pointer;
+            font-family: 'Exo 2', sans-serif;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .season-select-btn:hover {
+            border-color: var(--border-bright);
+            background: rgba(138,43,226,0.08);
+        }
+        .season-select-btn.open {
+            border-color: var(--border-bright);
+            box-shadow: var(--glow-purple);
+        }
+
+        .season-select-label {
+            font-size: 0.78rem; font-weight: 700;
+            color: var(--text); letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .season-select-chevron {
+            width: 14px; height: 14px;
+            flex-shrink: 0;
+            color: var(--text-muted);
+            transition: transform 0.2s;
+        }
+        .season-select-btn.open .season-select-chevron {
+            transform: rotate(180deg);
+            color: var(--purple-light);
+        }
+
+        .season-select-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 220px;
+            background: var(--surface);
+            border: 1px solid var(--border-bright);
+            border-radius: 10px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.5), var(--glow-purple);
+            padding: 6px;
+            display: none;
+            flex-direction: column;
+            gap: 2px;
+            z-index: 200;
+        }
+        .season-select-menu.open { display: flex; }
+
+        .season-option {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .season-option:hover {
+            background: rgba(138,43,226,0.1);
+            border-color: var(--border);
+        }
+        .season-option-text {
+            display: flex; flex-direction: column; gap: 2px;
+        }
+        .season-option-title {
+            font-size: 0.82rem; font-weight: 700; color: var(--text);
+            letter-spacing: 0.5px;
+        }
+        .season-option-sub {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.55rem; letter-spacing: 1.5px;
+            color: var(--text-muted); text-transform: uppercase;
+        }
+        .season-option.active .season-option-title {
+            background: var(--grad-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .season-option-check {
+            width: 16px; height: 16px;
+            color: var(--purple-light);
+            flex-shrink: 0;
+            visibility: hidden;
+        }
+        .season-option.active .season-option-check { visibility: visible; }
 
         header {
             position: relative; z-index: 1;
@@ -586,6 +687,8 @@
             .nav-links { gap: 2px; }
             .nav-links a { padding: 5px 8px; font-size: 0.65rem; }
             .section-card { padding: 20px 16px; }
+            .season-select-label { display: none; }
+            .season-select-btn { padding: 7px 9px; }
         }
     </style>
 </head>
@@ -600,6 +703,37 @@
             <li><a href="#jogos">Jogos</a></li>
             <li><a href="#elencos">Elencos</a></li>
         </ul>
+
+        <div class="nav-right">
+            <div class="season-select" id="seasonSelect">
+                <button class="season-select-btn" id="seasonSelectBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="season-select-label">Temporada 2025/2026</span>
+                    <svg class="season-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="season-select-menu" id="seasonSelectMenu" role="listbox">
+                    <a class="season-option active" href="index.html" role="option" aria-selected="true">
+                        <div class="season-option-text">
+                            <span class="season-option-title">Temporada 2025/2026</span>
+                            <span class="season-option-sub">Encerrada · Campeão QPD</span>
+                        </div>
+                        <svg class="season-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </a>
+                    <a class="season-option" href="season2026_2027.html" role="option" aria-selected="false">
+                        <div class="season-option-text">
+                            <span class="season-option-title">Temporada 2026/2027</span>
+                            <span class="season-option-sub">Nova temporada</span>
+                        </div>
+                        <svg class="season-option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
     </nav>
 
     <header>
@@ -631,7 +765,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- 3° GEO: R1 V(4-2), R2 V(4-3), R3 E(3-3), R5wo V(3-0) → J=4, V=3, E=1, D=0, GP=14, GC=8, SG=+6, PTS=10 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-qual">
@@ -645,7 +778,6 @@
                             <td>14</td><td>8</td>
                             <td class="sg-pos">+6</td>
                         </tr>
-                        <!-- 1° QPD: R1 V(3-1), R3 E(3-3), R4 V(3-2), R5 E(1-1) → J=4, V=2, E=2, D=0, GP=10, GC=8, SG=+2, PTS=8 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-qual">
@@ -659,7 +791,6 @@
                             <td>10</td><td>8</td>
                             <td class="sg-pos">+2</td>
                         </tr>
-                        <!-- 2° PD: R1 D(2-4), R2 V(7-1), R4 V(5-1), R5 E(1-1) → J=4, V=2, E=1, D=1, GP=15, GC=7, SG=+8, PTS=7 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-qual">
@@ -673,7 +804,6 @@
                             <td>15</td><td>7</td>
                             <td class="sg-pos">+8</td>
                         </tr>
-                        <!-- 1° MED: R1 D(1-3), R2 D(3-4), R4 D(1-5), R5 V(3-0) → J=4, V=1, E=0, D=3, GP=8, GC=15, SG=-7, PTS=3 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-qual">
@@ -687,7 +817,6 @@
                             <td>8</td><td>15</td>
                             <td class="sg-neg">-7</td>
                         </tr>
-                        <!-- 1° PD: R2 D(1-7), R4 D(2-3), R5wo D(0-3), R5 D(0-3) → J=4, V=0, E=0, D=4, GP=3, GC=16, SG=-13, PTS=0 -->
                         <tr>
                             <td class="team-name">
                                 <span class="rank-indicator rank-out">
@@ -711,7 +840,6 @@
             <span class="section-number">02 / 05</span>
             <h2>🏆 Fase Final</h2>
 
-            <!-- Phase labels -->
             <div class="bracket-phase-labels">
                 <div class="bracket-phase-label lbl-sf">Semifinais</div>
                 <div class="bracket-phase-label lbl-conn"></div>
@@ -719,18 +847,10 @@
                 <div class="bracket-phase-label lbl-champ">Campeão</div>
             </div>
 
-            <!--
-                Resultado:
-                3° GEO 4x0 1° MED  → GEO avança
-                1° QPD 3x3 2° PD (QPD venc. pênaltis) → QPD avança
-                FINAL: 3° GEO 3x3 1° QPD (QPD venc. pênaltis) → QPD CAMPEÃO
-            -->
             <div class="bracket-grid">
 
-                <!-- SEMIFINAIS (coluna esquerda) -->
                 <div class="bk-sf-col">
 
-                    <!-- SF1 -->
                     <div class="bk-sf-match">
                         <div class="bk-sf-match-label">SEMIFINAL 1</div>
                         <div class="bk-team winner">
@@ -747,7 +867,6 @@
 
                     <div class="bk-sf-spacer"></div>
 
-                    <!-- SF2 -->
                     <div class="bk-sf-match">
                         <div class="bk-sf-match-label">SEMIFINAL 2</div>
                         <div class="bk-team winner">
@@ -765,20 +884,6 @@
 
                 </div>
 
-                <!-- SVG CONNECTOR: SF → FINAL
-                     SF1 center ≈ y=54 (label 18 + 2 teams × 36px/2 = 18+36=54, actually label+gap = let's use fixed coords)
-                     SF1 block height: label(22) + team(40) + gap(6) + team(40) = 108px  → center = 22 + (40+6+40)/2 = 22+43 = 65
-                     spacer = 44px
-                     SF2 block height same → starts at 108+44=152 → center = 152+65=217
-                     Total SVG height = 108+44+108+18(label) = ~290, but we just need from top of SF1 teams to bottom of SF2 teams
-                     
-                     Let's use:
-                     SF1 block: label(22px) + t1(40px) + gap(6px) + t2(40px) = 108px total, center of teams = 22+43=65
-                     spacer: 44px
-                     SF2 block: 108px, center = 108+44+22+43 = 217
-                     Midpoint Y = (65+217)/2 = 141
-                     SVG height = 108+44+108+22 = 282 (add label offset)
-                -->
                 <svg class="bk-connector" width="56" height="282" viewBox="0 0 56 282" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="sfGrad1" x1="0" y1="0" x2="1" y2="0">
@@ -794,21 +899,15 @@
                             <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
                         </filter>
                     </defs>
-                    <!-- SF1: horizontal line from team edge to vertical bar -->
                     <line x1="0" y1="65" x2="28" y2="65" stroke="url(#sfGrad1)" stroke-width="1.5"/>
-                    <!-- SF2: horizontal line from team edge to vertical bar -->
                     <line x1="0" y1="217" x2="28" y2="217" stroke="url(#sfGrad2)" stroke-width="1.5"/>
-                    <!-- Vertical bar connecting SF1 and SF2 midpoints -->
                     <line x1="28" y1="65" x2="28" y2="217" stroke="rgba(245,158,11,0.5)" stroke-width="1.5"/>
-                    <!-- Horizontal line from midpoint → final -->
                     <line x1="28" y1="141" x2="56" y2="141" stroke="rgba(245,158,11,0.8)" stroke-width="1.5"/>
-                    <!-- Junction dots -->
                     <circle cx="28" cy="65"  r="3" fill="rgba(138,43,226,0.9)" filter="url(#glow)"/>
                     <circle cx="28" cy="217" r="3" fill="rgba(65,105,225,0.9)"  filter="url(#glow)"/>
                     <circle cx="28" cy="141" r="4" fill="rgba(245,158,11,0.95)" filter="url(#glow)"/>
                 </svg>
 
-                <!-- FINAL (coluna central) -->
                 <div class="bk-final-card">
                     <div class="bk-final-label">⚡ FINAL</div>
                     <div class="bk-team final">
@@ -824,7 +923,6 @@
                     <div class="bk-pen-note">QPD venc. nos pênaltis</div>
                 </div>
 
-                <!-- SVG CONNECTOR: FINAL → CHAMPION -->
                 <svg class="bk-connector" width="40" height="282" viewBox="0 0 40 282" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="champGrad" x1="0" y1="0" x2="1" y2="0">
@@ -836,7 +934,6 @@
                     <circle cx="0" cy="141" r="3" fill="rgba(245,158,11,0.7)"/>
                 </svg>
 
-                <!-- CAMPEÃO -->
                 <div class="bk-champ-col">
                     <div class="bk-trophy">🏆</div>
                     <div class="bk-champ-slot">
@@ -857,48 +954,36 @@
                 <div class="stat-panel">
                     <div class="stat-panel-header">⚽ Artilheiros</div>
                     <ul class="stat-list">
-                        <!-- Caio: R2×4 + R4×2 = 8 -->
                         <li class="stat-item">
                             <span class="stat-rank">1</span>
                             <span class="stat-name">Caio <span class="stat-team">(2° PD)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:100%"></span></span>
                             <span class="stat-value">6</span>
                         </li>
-                        <!-- Otávio: R1×3 + R2×1 = 4... wait: R1 scored 3 for GEO (Otávio x3) + R2 Otávio 1 = 4 -->
-                        <!-- Actually R1: Otávio (x3) means 3 goals, R2: Otávio 1 goal → total 4 -->
                         <li class="stat-item">
                             <span class="stat-rank">2</span>
                             <span class="stat-name">Otávio <span class="stat-team">(3° GEO)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:62%"></span></span>
                             <span class="stat-value">4</span>
                         </li>
-                        <!-- Mendes: R1×1 + R2×1 + R4×1 = 3 -->
-                        <!-- Tiago: R4×2 = 2 (already in HTML), check R4: "Tiago (x2)" -->
-                        <!-- Tiago already had 2, no new goals → 2... wait, was he 2 before? Yes. No new goals in R5 for Tiago. Stays 2 -->
-                        <!-- But wait, artilharia previously showed Tiago with 2. No new goals. So Tiago stays 2. -->
-                        <!-- Mendes: was 3 (R1 1gol, R2 1gol, R4 1gol) → stays 3 -->
                         <li class="stat-item">
                             <span class="stat-rank">3</span>
                             <span class="stat-name">Mendes <span class="stat-team">(2° PD)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:50%"></span></span>
                             <span class="stat-value">3</span>
                         </li>
-                        <!-- Rodrigo QPD: R3×1(assist auto) wait — R3 was 1QPD 3-3 3GEO: Rodrigo (x2) + Arthur = R3 Rodrigo scored 2 goals -->
-                        <!-- Previously Rodrigo had 3: R1 had Rodrigo? Let me recheck: R1 QPD scorers: Piva(x2) + Ronan. R3 QPD: Rodrigo(x2)+Arthur. R4 QPD: Enzo+Rodrigo+Ryan. Total Rodrigo: 2+1=3. No new in R5. Stays 3. -->
                         <li class="stat-item">
                             <span class="stat-rank">3</span>
                             <span class="stat-name">Rodrigo <span class="stat-team">(1° QPD)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:50%"></span></span>
                             <span class="stat-value">3</span>
                         </li>
-                        <!-- Nathan: R1 MED 1gol + R4 MED 1gol + R5 MED 1gol = 3 -->
                         <li class="stat-item">
                             <span class="stat-rank">3</span>
                             <span class="stat-name">Nathan <span class="stat-team">(1° MED)</span></span>
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:50%"></span></span>
                             <span class="stat-value">3</span>
                         </li>
-                        <!-- Piva: 2, Davi: 2, Jefte: 2, Tiago: 2, Gabriel: 2 -->
                         <li class="stat-item">
                             <span class="stat-rank">6</span>
                             <span class="stat-name">Piva <span class="stat-team">(1° QPD)</span></span>
@@ -929,7 +1014,6 @@
                             <span class="stat-bar-wrap"><span class="stat-bar" style="width:25%"></span></span>
                             <span class="stat-value">2</span>
                         </li>
-                        <!-- 1-goal scorers -->
                         <li class="stat-item">
                             <span class="stat-rank">11</span>
                             <span class="stat-name">Bernardo <span class="stat-team">(2° PD)</span></span>
@@ -1536,5 +1620,35 @@
         </section>
 
     </div>
+
+    <script>
+        (function () {
+            const wrap = document.getElementById('seasonSelect');
+            const btn = document.getElementById('seasonSelectBtn');
+            const menu = document.getElementById('seasonSelectMenu');
+
+            function closeMenu() {
+                menu.classList.remove('open');
+                btn.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const isOpen = menu.classList.toggle('open');
+                btn.classList.toggle('open', isOpen);
+                btn.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!wrap.contains(e.target)) closeMenu();
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeMenu();
+            });
+        })();
+    </script>
+
 </body>
 </html>
